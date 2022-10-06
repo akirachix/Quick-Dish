@@ -1,0 +1,59 @@
+body{
+    background: #bdc3c7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.form{
+    background-color: white;
+    border-radius: 5px;
+    width: 550px;
+    margin: 20px auto;
+    padding: 20px;
+}
+.form__input{
+box-sizing: border-box;
+text-align: center;
+width: 350px;
+height: 40px;
+border: 1px solid #000000;
+border-radius: 61px
+
+}
+
+
+.form-body{
+    text-align: center;
+    padding: 20px 10px;
+
+}
+
+.form-body > *{
+    padding: 10px;
+}
+.password input{
+    text-align: center;
+}
+
+.footer{
+    text-align: center;
+}
+.footer button{
+    color: rgb(255, 255, 255);
+    width: 350px;
+    height: 40px;
+    /* width: 270px; */
+   background: #09C75C;
+   border-radius: 61px;
+}
+.footer p{
+    margin-top: 15px;
+}
+
+.signin{
+    margin-top: 20px;
+}
+.signin span{
+    color: rgb(0, 132, 255);
+    cursor: pointer;
+}
