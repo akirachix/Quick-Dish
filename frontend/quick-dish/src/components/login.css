@@ -1,4 +1,5 @@
 body{
+   
     background: #bdc3c7; 
     background: -webkit-linear-gradient(to right, #d9dde1, #bdc3c7); 
     background: linear-gradient(to right, #e6e8ea, #bdc3c7); 
@@ -31,10 +32,11 @@ border-radius: 61px
 .form-body > *{
     padding: 10px;
 }
-.password input{
+.form__input{
     text-align: center;
+    outline: none;
+    border: none;
 }
-
 .footer{
     text-align: center;
 }
@@ -44,20 +46,26 @@ border-radius: 61px
     height: 40px;
     background: #09C75C;
     border-radius: 61px;
+    margin-top: 20px;
 }
 .footer p{
     margin-top: 15px;
 }
 
-.signin{
+.signup{
     margin-top: 20px;
 }
-.signin span{
+.signup span{
     color: rgb(0, 132, 255);
     cursor: pointer;
 }
+
 .check{
-    margin-top: -25px;
-    display: flex;
-    margin-left: 10%;
-  }
+    margin-top: -18px;
+    color: #0f0f0e;
+    /* margin-left: -10%; */
+ }  
+ .forgetpswd{
+color: #C62323;
+margin-left: 50px;
+ } 

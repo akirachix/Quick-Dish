@@ -14,6 +14,8 @@ body{
 .form__input{
 box-sizing: border-box;
 text-align: center;
+outline: none;
+border: none;
 width: 350px;
 height: 40px;
 border: 1px solid #000000;
@@ -45,6 +47,8 @@ border-radius: 61px
     /* width: 270px; */
    background: #09C75C;
    border-radius: 61px;
+   cursor: pointer;
+   /* margin-top: -15px; */
 }
 .footer p{
     margin-top: 15px;
