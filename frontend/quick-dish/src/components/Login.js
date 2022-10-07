@@ -62,16 +62,7 @@ return(
             <Navigate exact to='/Home'>Login</Navigate>
       </section>
   ): (
-  <section>
-
-  <div className="form" style={{
-      backgroundImage: 'url("https://images.unsplash.com/photo-1543353071-10c8ba85a904?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9vZCUyMGJhY2tncm91bmR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60")',
-      height: "300px", backgroundRepeat: "no-repeat"
-    }}>
-    </div>
-
-  <img src={"https://images.unsplash.com/photo-1543353071-10c8ba85a904?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9vZCUyMGJhY2tncm91bmR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"} alt = "food"/> 
-
+  <section className="form1"  >
       <p ref={errRef} className={errMsg? "errmsg":"offscreen"} 
       aria-live="assertive" >{errMsg}</p>
     
@@ -89,7 +80,10 @@ return(
           ></input> <br/>
           <Input
             className="form__input"
+            ref={userRef}
+            autoComplete="off"
             id="password"
+            required
             placeholder="password"
             type={values.showPassword ? "text" : "password"}
             onChange={handlePasswordChange("password")}
