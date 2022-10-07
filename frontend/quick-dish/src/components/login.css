@@ -12,6 +12,7 @@ body{
     margin: 20px auto;
     padding: 20px;
 }
+
 .form__input{
 box-sizing: border-box;
 text-align: center;
@@ -44,6 +45,7 @@ border-radius: 61px
     color: rgb(255, 255, 255);
     width: 350px;
     height: 40px;
+    border: none;
     background: #09C75C;
     border-radius: 61px;
     margin-top: 20px;
