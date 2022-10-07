@@ -13,6 +13,7 @@ function Login() {
   const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
 
+
   const [values, setValues] = React.useState({
     password: "",
     showPassword: false,
@@ -43,17 +44,19 @@ function Login() {
       setConfirmPassword(value);
     }
   };
+  
+
   const handleSubmit = () => {
     console.log(email, password, confirmPassword);
   };
-  // <div style={{ backgroundImage:`url(${recipe})`,backgroundRepeat:"no-repeat",backgroundSize:"contain" }}></div>
   return (
+    
     <div className="form">
-      <h4>Sign In</h4>
+      <h1>Sign In</h1>
       <div className="form-body">
         <div className="email">
-          {/* <label className="form__label" for="email">Email </label> */}
-          <input
+           
+          <input  required={true}
             type="email"
             id="email"
             value={email}
@@ -64,7 +67,7 @@ function Login() {
         </div>
         <div className="password">
           <div>
-            <Input
+            <Input required={true}
               className="form__input"
               id="password"
               placeholder="password"
@@ -92,15 +95,12 @@ function Login() {
         </label>
         <label className="forgetpswd">forget Password?</label>
       </div>
-      {/* <div className="check">
-                <input type="checkbox" id="keep" placeholder="Keep me logged in " value="Keep me logged in"></input> <br></br>
-                <label className="logged">Remember Me</label> 
-                </div> */}
+     
       <div class="footer">
-        <button type="submit" class="btn">
+        <button type="submit" class="btn" onClick={handleSubmit} >
           Sign In
         </button>
-        <p>__________ OR _________</p>{" "}
+        <p>_________ OR _________</p>{" "}
       </div>
       <div className="signup">
         <p className="signup">
@@ -108,7 +108,7 @@ function Login() {
           <Router>
             <Link to="/Login"></Link>
             <a href="https://google.com" target="_blank" rel="noreferrer">
-              {" "}
+              {/* {" "} */}
               <span>Sign Up </span>
             </a>
           </Router>

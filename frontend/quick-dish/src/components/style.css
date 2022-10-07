@@ -11,15 +11,18 @@ body{
     margin: 20px auto;
     padding: 20px;
 }
+
 .form__input{
 box-sizing: border-box;
 text-align: center;
 outline: none;
+margin: 10px;
 border: none;
 width: 350px;
 height: 40px;
 border: 1px solid #000000;
 border-radius: 61px
+
 
 }
 
@@ -37,21 +40,18 @@ border-radius: 61px
     text-align: center;
 }
 
-.footer{
+.btn{
     text-align: center;
 }
-.footer button{
+.btn button{
     color: rgb(255, 255, 255);
     width: 350px;
     height: 40px;
-    /* width: 270px; */
+    margin-top: 20px;
+    border: none;
    background: #09C75C;
    border-radius: 61px;
    cursor: pointer;
-   /* margin-top: -15px; */
-}
-.footer p{
-    margin-top: 15px;
 }
 
 .signin{
