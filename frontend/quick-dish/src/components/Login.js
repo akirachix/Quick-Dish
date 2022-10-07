@@ -49,7 +49,7 @@ useEffect(()=>{
         setEmail('')
         setPassword('')  
         setSuccess(true)
-        Navigate('/Login')
+        Navigate('/Home')
 
 }
 
@@ -58,7 +58,7 @@ return(
   {success ? (
     
       <section >
-            <Navigate exact to='/SignUp'>Login</Navigate>
+            <Navigate exact to='/Home'>Login</Navigate>
       </section>
   ): (
   <section className="form"  >
