@@ -79,7 +79,10 @@ return(
           ></input> <br/>
           <Input
             className="form__input"
+            ref={userRef}
+            autoComplete="off"
             id="password"
+            required
             placeholder="password"
             type={values.showPassword ? "text" : "password"}
             onChange={handlePasswordChange("password")}
