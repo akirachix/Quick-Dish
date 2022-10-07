@@ -5,12 +5,14 @@ body{
     background: linear-gradient(to right, #e6e8ea, #bdc3c7); 
 }
 
-.form{
+.form1{
     background-color: white;
     border-radius: 5px;
     width: 400px;
     margin: 20px auto;
     padding: 20px;
+    margin-top: 145px;
+
 }
 
 .form__input{

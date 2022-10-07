@@ -61,7 +61,7 @@ return(
             <Navigate exact to='/Home'>Login</Navigate>
       </section>
   ): (
-  <section className="form"  >
+  <section className="form1"  >
       <p ref={errRef} className={errMsg? "errmsg":"offscreen"} 
       aria-live="assertive" >{errMsg}</p>
     
