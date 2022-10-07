@@ -1,0 +1,45 @@
+
+.bar_text{
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    margin-left: 22%;
+}
+.bar_text h2{
+    margin-top: -5%;
+}
+.bar_add{
+    margin-bottom: 20px;
+    margin-left:6px;
+    display: flex;
+    width: 60%;
+}
+.bar_add > input{
+    width: 80%;
+    height: 25px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding-left: 43px;
+}
+.bar__addIcon{
+    position: absolute;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
