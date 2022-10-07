@@ -1,0 +1,66 @@
+.home__top{
+    display: flex;
+    /* justify-content: space-between; */
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+.home__top > h4{
+    font-size: 18px;
+    margin-left: 25%;
+    font-weight: 450;
+}
+.home__top > h2{
+    
+    margin-left: 2%;
+}
+.card1{
+    display: flex;
+    margin-left: 24px;
+}
+.card2{
+    margin-top: 2%;
+    display: flex;
+    margin-left: 24px;
+}
+.vege{
+    box-shadow: inset;
+    font-size: 13px;
+    box-shadow: 0px 2px 6px;
+    height: 2%;
+    width: 12%;
+    margin-left: 1%;
+    line-height: 20%;
+}
+/* .span{
+    color: rgb(206, 36, 36);
+    
+} */
+.meat{
+    box-shadow: inset;
+    font-size: 13px;
+    box-shadow: 0px 4px 10px;
+    height: 2%;
+    width: 12%;
+    margin-left: 1%;
+    line-height: 20%;
+}
+
+.fish{
+    box-shadow: inset;
+    font-size: 13px;
+    box-shadow: 0px 4px 10px;
+    height: 2%;
+    width: 12%;
+    margin-left: 1%;
+    line-height: 20%;
+}
+.baking{
+    box-shadow: inset;
+    font-size: 13px;
+    box-shadow: 0px 4px 10px;
+    height: 2%;
+    width: 12%;
+    margin-left: 1%;
+    line-height: 20%;
+}
