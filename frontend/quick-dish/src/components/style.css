@@ -1,7 +1,11 @@
 body{
-    background: #bdc3c7;  
-    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  
-    background: linear-gradient(to right, #2c3e50, #bdc3c7); 
+     /* background-image: url("recipe.jpeg");
+     background-repeat: no-repeat;
+     background-size: auto; */
+     
+    /* background: white;   */
+    /* background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);   */
+    /* background: linear-gradient(to right, #2c3e50, #bdc3c7);  */
 }
 
 .form{
