@@ -5,6 +5,9 @@ import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 import Body from "./Body"
 
 function App() {
+  var url ="https://api.spoonacular.com/food/ingredients/search"
+  
+
   return (
     <div className="App">
       
