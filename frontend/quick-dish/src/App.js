@@ -8,6 +8,9 @@ import Body from "./components/Body";
 
 
 function App() {
+  var url ="https://api.spoonacular.com/food/ingredients/search"
+  
+
   return (
      <div className="App">
       <Router>

@@ -1,8 +1,9 @@
 body{
+    background-image: url("https://images.unsplash.com/photo-1543353071-10c8ba85a904?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
    
-    background: #bdc3c7; 
-    background: -webkit-linear-gradient(to right, #d9dde1, #bdc3c7); 
-    background: linear-gradient(to right, #e6e8ea, #bdc3c7); 
 }
 
 .form1{
