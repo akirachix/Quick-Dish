@@ -63,9 +63,13 @@
     width: 12%;
     margin-left: 1%;
     line-height: 20%;
-}  */
+} 
+ */
 
-.home{
+.body{
+    background-color: #fff;
+}
+ .home{
     /* display: flex; */
     flex-direction: row;
 }
