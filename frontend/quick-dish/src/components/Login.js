@@ -1,6 +1,7 @@
 import React, {useRef, useState, useEffect } from "react";
 import "./login.css";
 import IconButton from "@material-ui/core/IconButton";
+// import recipe from ".../src/components/recipe.jpeg";
 // import InputLabel from "@material-ui/core/InputLabel";
 import Visibility from "@material-ui/icons/Visibility";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -61,12 +62,13 @@ return(
             <Navigate exact to='/Home'>Login</Navigate>
       </section>
   ): (
-  <section className="form"  >
+    
+  <section className="form1"  >
       <p ref={errRef} className={errMsg? "errmsg":"offscreen"} 
       aria-live="assertive" >{errMsg}</p>
     
       <form onSubmit={handleSubmit} >
-        <h1>Sign Up</h1>
+        <h1>Sign in</h1>
           <input type="text"  
           className="form__input"
           id="email" 
@@ -75,11 +77,14 @@ return(
           onChange={(e) => setEmail(e.target.value)}
           value={email}
           required
-          placeholder=" enter Email"
+          placeholder=" enter email"
           ></input> <br/>
           <Input
             className="form__input"
+            ref={userRef}
+            autoComplete="off"
             id="password"
+            required
             placeholder="password"
             type={values.showPassword ? "text" : "password"}
             onChange={handlePasswordChange("password")}
@@ -105,7 +110,7 @@ return(
    <div className="signup">
          <p className="signup">
            Not a member yet?
-             <a href="/" ><span>Sign Up </span></a>
+             <a href="/" ><span>Sign up </span></a>
          </p>
        </div>
     </form>

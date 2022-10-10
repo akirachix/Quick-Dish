@@ -71,7 +71,7 @@ const handleSubmit = async(e)=>{
         aria-live="assertive" >{errMsg}</p>
       
         <form onSubmit={handleSubmit} >
-          <h1>Sign Up</h1>
+          <h1>Sign up</h1>
        <input
             className="form__input"
             type="text"
@@ -81,7 +81,7 @@ const handleSubmit = async(e)=>{
             autoComplete="off"
             ref={userRef}
             required
-            placeholder=" enter Firstname"
+            placeholder=" enter first name"
  ></input> <br/>
     <input
             className="form__input"
@@ -92,7 +92,7 @@ const handleSubmit = async(e)=>{
             ref={userRef}
             autoComplete="off"
             required
-            placeholder=" enter LastName"
+            placeholder=" enter last name"
  ></input> <br/>
 
             <input type="text"  
@@ -103,7 +103,7 @@ const handleSubmit = async(e)=>{
             onChange={(e) => setEmail(e.target.value)}
             value={email}
             required
-            placeholder=" enter Email"
+            placeholder=" enter email"
             ></input> <br/>
             <Input
               className="form__input"
@@ -133,7 +133,7 @@ const handleSubmit = async(e)=>{
         <div className="signin">
        <p className="signin">
            Already a QuickDish member?
-           <a href="/Login" ><span>Sign In </span></a>
+           <a href="/Login" ><span>Sign in </span></a>
       </p>
       </div>
       </form>
