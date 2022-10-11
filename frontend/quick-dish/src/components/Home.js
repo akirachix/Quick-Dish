@@ -1,6 +1,8 @@
 import React from 'react'
 import "./Home.css"
-import FavoriteOutlinedIcon from '@material-ui/icons/FavoriteOutlined';
+import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
+import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
+import FavoriteBorderOutlinedIcon from '@material-ui/icons/Favorite';
 
 function Home() {
   return (
@@ -56,55 +58,6 @@ function Home() {
 
            </div>
 
-        {/* <div className='categoties'>
-          <div className='card1'>
-            <div className='image'>
-              <img src=''></img>
-
-            </div>
-            <div className='vege'>
-            <h3> <span>Vegetables</span></h3>
-            <p>You have 2 left</p>
-            </div>
-            <div className='meat'>
-            <h3>Meat</h3>
-            <p>You have 2kg left</p>
-            </div>
-            
-            <div className='fish'>
-            <h3>Fish</h3>
-            <p>You have 3 left</p>
-            </div>
-
-            <div className='baking'>
-            <h3>Baking</h3>
-            <p>You have 3kg left</p>
-            </div>
-          
-
-          </div> */}
-
-          {/* <div className='card2'>
-            <div className='vege'>
-            <h3> <span>Pasta</span></h3>
-            <p>You have 0kg left</p>
-            </div>
-            <div className='meat'>
-            <h3>Grains & Cereals</h3>
-            <p>You have 2kg left</p>
-            </div>
-            
-            <div className='fish'>
-            <h3>Dairy/eggs</h3>
-            <p>You have 6 left</p>
-            </div>
-
-            <div className='baking'>
-            <h3>Oil & fat</h3>
-            <p>You have 3kg left</p>
-            </div>
-          </div> */}
-
           <div className='home__bodyInformation2'>
            <div className='home__info'>
              <div>
@@ -159,8 +112,8 @@ function Home() {
              <div className='aside__text3'>
                <h3>Russian Fried Potatoes</h3>
                <div className="icons">
-               {/* <FavoriteBorderOutlinedIcon /> */}
-               {/* <MoreVertOutlinedIcon /> */}
+               <FavoriteBorderOutlinedIcon /> 
+                <MoreVertOutlinedIcon />
                </div>
              </div>
            </div>
@@ -172,8 +125,8 @@ function Home() {
              <div className='aside__text3'>
                <h3>Fried Mashed Potatoes</h3>
                <div className="icons">
-               {/* <FavoriteBorderOutlinedIcon />
-               <MoreVertOutlinedIcon /> */}
+                <FavoriteBorderOutlinedIcon />
+               <MoreVertOutlinedIcon /> 
                </div>
              </div>
            </div>
@@ -185,8 +138,8 @@ function Home() {
              <div className='aside__text3'>
                <h3>Tomato Basil Chicken</h3>
                <div className="icons">
-               {/* <FavoriteBorderOutlinedIcon />
-               <MoreVertOutlinedIcon /> */}
+               <FavoriteBorderOutlinedIcon />
+               <MoreVertOutlinedIcon /> 
                </div>
              </div>
            </div>
@@ -201,8 +154,8 @@ function Home() {
              <div className='aside__text3'>
                <h3>Russian Fried Potatoes</h3>
                <div className="icons">
-               {/* <FavoriteBorderOutlinedIcon />
-               <MoreVertOutlinedIcon /> */}
+                <FavoriteBorderOutlinedIcon />
+               <MoreVertOutlinedIcon /> 
                </div>
              </div>
            </div>
@@ -214,8 +167,8 @@ function Home() {
              <div className='aside__text3'>
                <h3>Fried Mashed Potatoes</h3>
                <div className="icons">
-               {/* <FavoriteBorderOutlinedIcon />
-               <MoreVertOutlinedIcon /> */}
+               <FavoriteBorderOutlinedIcon />
+               <MoreVertOutlinedIcon /> 
                </div>
              </div>
            </div>
@@ -228,21 +181,97 @@ function Home() {
              <div className='aside__text3'>
                <h3>Tomato Basil Chicken</h3>
                <div className="icons">
-               {/* <FavoriteBorderOutlinedIcon />
-               <MoreVertOutlinedIcon /> */}
+                <FavoriteBorderOutlinedIcon />
+               <MoreVertOutlinedIcon /> 
                </div>
              </div>
            </div>
 
            </div>
 
-        {/* </div> */}
+       
 
-        <div className='home__left'>
-          <h3>Select Ingredients</h3>
-          <h4>djwdhfihfefifiefifidjknfdndkn</h4>
-        </div>
-    </div>
+        
+    {/* </div> */}
+
+<div className='left__bodyInformation1'>
+<div className='container'>
+  <h3>Pumpkin</h3>
+</div>
+<div className='container'>
+  <h3>Cabbages</h3>
+</div>
+<div className='container'>
+  <h3>Garlic</h3>
+</div>
+</div>
+<div className='left__bodyInformation1'>
+<div className='container__red'>
+  <h3>Brocolli</h3>
+</div>
+<div className='container__red'>
+  <h3>Spinach</h3>
+</div>
+<div className='container'>
+  <h3>Onion</h3>
+</div>
+</div>
+<div className='left__bodyInformation1'>
+<div className='container'>
+  <h3>Carrot</h3>
+</div>
+<div className='container__red'>
+  <h3>Potato</h3>
+</div>
+<div className='container'>
+  <h3>Lettuce</h3>
+</div>
+</div>
+<div className='left__bodyInformation1'>
+<div className='container'>
+  <h3>Okra</h3>
+</div>
+<div className='container'>
+  <h3>Tomato</h3>
+</div>
+<div className='container__red'>
+  <h3>EggPlant</h3>
+</div>
+</div>
+<div className='left__bodyInformation1'>
+<div className='container'>
+  <h3>Celery</h3>
+</div>
+<div className='container'>
+  <h3>Kale</h3>
+</div>
+<div className='container'>
+  <h3>Cucumber</h3>
+</div>
+</div>
+<div className='left__bodyInformation1'>
+<div className='container'>
+  <h3>Eggs</h3>
+</div>
+<div className='container'>
+  <h3>Lettuce</h3>
+</div>
+<div className='container'>
+  <h3>Lettuce</h3>
+</div>
+</div>
+<div className='left__bodyInformation1'>
+<div className='container'>
+  <h3>Okra</h3>
+</div>
+<div className='container'>
+  <h3>Tomato</h3>
+</div>
+<div className='container'>
+  <h3>+ 4 more</h3>
+</div>
+</div>
+</div>
   )
 }
 export default Home;

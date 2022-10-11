@@ -10,9 +10,13 @@ function Header() {
         </div>
         <div className="header__search">
         <SearchIcon className="header__searchIcon"/>
-        <input className="header__searchInput" type="text" placeholder='Search for recipe'>
-        </input>
-                
+                <input 
+                className="header__searchInput" 
+                type="text"
+                placeholder='Search for recipe'
+                >
+                </input>
+
         </div>
      </div>
   )

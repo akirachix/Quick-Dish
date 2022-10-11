@@ -3,12 +3,8 @@ import './App.css';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
-<<<<<<< HEAD
 import Body from "./components/Body"
-=======
-import Body from "./components/Body";
 
->>>>>>> e3ee79f688d887eacb200c11b76a251980dacdb8
 
 
 function App() {
