@@ -32,6 +32,7 @@ border-radius: 61px
 
 }
 
+
 .form-body > *{
     padding: 10px;
 }
@@ -40,7 +41,16 @@ border-radius: 61px
     outline: none;
     border: none;
 }
-.footer{
+.box{
+    color: #81807f;
+    margin-left: 20px;
+ }
+.box .forgetpswd{
+    padding: 14px;
+    cursor: pointer;
+    
+}
+/* .footer{
     text-align: center;
 }
 .footer button{
@@ -48,13 +58,13 @@ border-radius: 61px
     width: 350px;
     height: 40px;
     border: none;
-    background: #09C75C;
+    background:#F9B639;
     border-radius: 61px;
     margin-top: 20px;
 }
 .footer p{
     margin-top: 15px;
-}
+} */
 
 .signup{
     margin-top: 20px;

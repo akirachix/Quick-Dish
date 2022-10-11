@@ -6,7 +6,8 @@ import Visibility from "@material-ui/icons/Visibility";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Input from "@material-ui/core/Input";
-import { BrowserRouter as Router, Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+
 
 function Login() {
   const userRef= useRef()
@@ -98,6 +99,13 @@ return(
               </InputAdornment>
             }
           ></Input> <br/>
+           <div className='box'>
+                        <label>
+                            <input type="checkbox" name="text" />
+                            Remember Me
+                        </label>
+                       <label className='forgetpswd'>forget Password?</label>
+                  </div>
 
 <div className="btn">
             <button>Get Started</button>
