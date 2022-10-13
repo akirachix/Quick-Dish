@@ -48,7 +48,7 @@ const Ingredients = () => {
         </div>
 
         <div className="ingredients__icons">
-          <MdPlaylistAdd />
+         <a href='AddIngredients' > <MdPlaylistAdd /> </a> 
           <FaHeart />
           <BsThreeDotsVertical />
         </div>

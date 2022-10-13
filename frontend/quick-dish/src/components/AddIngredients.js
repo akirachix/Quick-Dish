@@ -89,7 +89,9 @@ const AddIngredients = () => {
 						</div>
 					))}
 				</div>
-                <div className='btn' type="submit" > <button>Done</button>  </div>
+                <div className='btn' type="submit" >
+					 <a href='Home' > <button>Done</button> </a>
+					  </div>
 			</div>
 		</div>
 	);
