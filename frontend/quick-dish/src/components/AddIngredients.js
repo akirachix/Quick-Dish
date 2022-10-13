@@ -1,19 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState,} from 'react';
 import './AddIng.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight, faChevronLeft, faCircle, faCheckCircle, faPlus, faDeleteLeft, faTrash, faEdit, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faChevronLeft, faCircle, faCheckCircle, faPlus,} from '@fortawesome/free-solid-svg-icons';
 
 const AddIngredients = () => {
-	// HINT: each "item" in our list names a name,
-	// a boolean to tell if its been completed, and a quantity
 	const [items, setItems] = useState([
-		// { itemName: 'item 1', quantity: 1, isSelected: false },
-		// { itemName: 'item 2', quantity: 3, isSelected: true },
-		// { itemName: 'item 3', quantity: 2, isSelected: false },
+		// window. location. reload()
+
 	]);
 
 	const [inputValue, setInputValue] = useState('');
-	const [totalItemCount, setTotalItemCount] = useState(0);
 
 	const handleAddButtonClick = () => {
 		const newItem = {
@@ -26,7 +22,6 @@ const AddIngredients = () => {
 
 		setItems(newItems);
 		setInputValue('');
-		// calculateTotal();
 	};
 
 	const handleQuantityIncrease = (index) => {
@@ -35,7 +30,6 @@ const AddIngredients = () => {
 		newItems[index].quantity++;
 
 		setItems(newItems);
-		// calculateTotal();
 	};
 
 	const handleQuantityDecrease = (index) => {
@@ -44,7 +38,6 @@ const AddIngredients = () => {
 		newItems[index].quantity--;
 
 		setItems(newItems);
-		// calculateTotal();
 	};
 
 	const toggleComplete = (index) => {
@@ -55,18 +48,10 @@ const AddIngredients = () => {
 		setItems(newItems);
 	};
 
-	// const calculateTotal = () => {
-	// 	const totalItemCount = items.reduce((total, item) => {
-	// 		return total + item.quantity;
-	// 	}, 0);
-
-	// 	setTotalItemCount(totalItemCount);
-	// };
-
 	return (
 		<div className='app-background'>
 			<div className='main-container'>
-                <h1>Add Ingredients to your pantry  <br/>
+                <h1 className='back'> <b> <FontAwesomeIcon icon={faChevronLeft} /></b> Add Ingredients to your pantry  <br/>
                  <span>please add ingrdients from your fridge</span> </h1>
 				<div className='add-item-box'>
 					<input value={inputValue} onChange={(event) => setInputValue(event.target.value)} className='add-item-input' placeholder='Add an ingredients...' />
@@ -86,9 +71,7 @@ const AddIngredients = () => {
 									<>
 										<FontAwesomeIcon icon={faCircle} />
 										<span>{item.itemName}</span>
-									
-                                      <FontAwesomeIcon icon={faTrash} />
-                                    
+							                                    
                                       </>
 								)
                               
@@ -106,8 +89,7 @@ const AddIngredients = () => {
 						</div>
 					))}
 				</div>
-                <div className='btn'>   <button>Done</button>  </div>
-				{/* <div className='total'>Total: {totalItemCount}</div> */}
+                <div className='btn' type="submit" > <button>Done</button>  </div>
 			</div>
 		</div>
 	);

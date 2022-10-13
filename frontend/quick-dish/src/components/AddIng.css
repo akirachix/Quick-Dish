@@ -9,6 +9,14 @@
   .main-container span {
       font-size: 15px;
       color: rgb(185, 185, 185);
+      margin-left: 40px;
+  }
+  .main-container h1{
+   margin-right: 100px;
+  }
+  .back b{
+    color: rgb(7, 7, 7);
+    margin-right: 70px;
   }
   .item-list h1{
     text-align: left;
@@ -27,7 +35,7 @@
   }
   
   .main-container {
-    background-color: #d7d7d7;
+    background-color: #ffffff;
     width: 500px;
     height: min-content;
     border-radius: 5px;
@@ -40,14 +48,18 @@
   }
   
   .add-item-box {
-    background: #fbc1bb;
-    color: #ec645b;
+    background: #e3e3e3;
+    color: #000000;
     margin-top: 1em;
     margin-bottom: 1em;
     display: flex;
     align-items: center;
     border-radius: 10px;
     padding: 5px;
+  }
+  .add-item-input::placeholder{
+
+    font-size: 14px;
   }
   
   .add-item-box svg {
@@ -77,7 +89,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px 0 20px 0;
-    border-bottom: 1px #fbc1bb solid;
+    border-bottom: 1px #fbdc86 solid;
   }
   
   .item-name {
@@ -94,16 +106,7 @@
     display: flex;
     justify-content: space-between;
   }
-  
-  .remove-button {
-    color: white;
-    background-color: red;
-  }
-  
-  .total {
-    float: right;
-    padding: 10px;
-  }
+
   
   .quantity {
     display: flex;
@@ -133,5 +136,9 @@
   
   .completed {
     text-decoration: line-through;
+  }
+  .btn button{
+    color: white;
+    background-color: #a05656;
   }
   

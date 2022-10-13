@@ -1,12 +1,6 @@
 import { useRef, useState, useEffect } from "react"
 import React from "react";
 import "./style.css";
-import IconButton from "@material-ui/core/IconButton";
-import Visibility from "@material-ui/icons/Visibility";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import Input from "@material-ui/core/Input";
-import {Navigate } from "react-router-dom";
 import axios from "axios"
 import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -77,23 +71,7 @@ const handleSubmit = async(e)=>{
 }
 
 
-  // toggle
-  const [values, setValues] = React.useState({
-    password: "",
-    showPassword: false,
-  });
-
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
-  const handlePasswordChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
+ 
 
   return(
     <> 
@@ -112,62 +90,45 @@ const handleSubmit = async(e)=>{
        <input
             className="form__input"
             type="text"
-            // value={firstName}
             onChange= {handleChange}
-            // onChange={(e) => setFirstName(e.target.value)}
             name="first_name"
             autoComplete="off"
             ref={userRef}
             required
-            placeholder=" enter Firstname"
+            placeholder=" Enter Firstname"
  ></input> <br/>
     <input
             className="form__input"
             type="text"
             // value={lastName}
             onChange= {handleChange}
-            // onChange={(e) => setLastName(e.target.value)}
             name="last_name"
             ref={userRef}
             autoComplete="off"
             required
-            placeholder=" enter Lastname"
+            placeholder=" Enter Lastname"
          
  ></input> <br/>
-    {/* <span className="icon-wrapper" onClick={togglePasswordVew}>
-            <i className={`fas ${eye}`}></i>
-          </span> */}
 
-            <input type="text"  
+            <input type="email"  
             className="form__input"
             name="email" 
             ref={userRef}
             autoComplete="off"
             onChange= {handleChange}
-            // onChange={(e) => setEmail(e.target.value)}
-            // value={email}
             required
-            placeholder=" enter Email"
+            placeholder=" Enter Email"
             ></input> <br/>
-            <Input
-              className="form__input"
-              name="password"
-              placeholder=" create password"
-              type={values.showPassword ? "text" : "password"}
-              onChange={handlePasswordChange("password")}
-              value={values.password}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                  >
-                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>
-              }
-            ></Input> <br/>
-
+              <input type="password"  
+            className="form__input"
+            name="password" 
+            ref={userRef}
+            autoComplete="off"
+            onChange= {handleChange}
+           
+            required
+            placeholder=" Enter Password"
+            ></input> <br/>
  <div className="btn">
               <button type="submit" onClick={signingIn} >Get Started</button>
 
