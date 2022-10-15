@@ -1,16 +1,12 @@
-<<<<<<< HEAD
-/*  */
-=======
 body{
-     /* background-image: url("recipe.jpeg");
+     background-image: url("recipe.jpeg");
      background-repeat: no-repeat;
-     background-size: auto; */
+     background-size: auto; 
      
-    /* background: white;   */
-    /* background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);   */
-    /* background: linear-gradient(to right, #2c3e50, #bdc3c7);  */
+    background: white;  
+    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  
+    /* /* background: linear-gradient(to right, #2c3e50, #bdc3c7);  */
 }
->>>>>>> e3ee79f688d887eacb200c11b76a251980dacdb8
 
 .form{
     background-color: white;
