@@ -1,12 +1,8 @@
 body{
-     background-image: url("recipe.jpeg");
-     background-repeat: no-repeat;
-     background-size: auto; 
-     
-    background: white;  
+    /* /* background: #bdc3c7;  
     background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  
-    /* /* background: linear-gradient(to right, #2c3e50, #bdc3c7);  */
-}
+    background: linear-gradient(to right, #2c3e50, #bdc3c7);  */
+} 
 
 .form{
     background-color: white;
@@ -16,9 +12,9 @@ body{
     padding: 20px;
     margin-top: 88px;
 }
-.form ::placeholder{
-    color: rgb(253, 248, 248);
-}
+/* .form ::placeholder{
+    /* color: rgb(132, 132, 132); */
+/* }  */
 
 .form__input{
 box-sizing: border-box;
@@ -63,7 +59,7 @@ border-radius: 61px
     height: 40px;
     margin-top: 20px;
     border: none;
-   background: #09C75C;
+   background: #F9B639;
    border-radius: 61px;
    cursor: pointer;
 }
