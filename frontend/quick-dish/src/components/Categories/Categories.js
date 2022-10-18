@@ -1,31 +1,32 @@
 import './Categories.css';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useGlobalContext } from '../../context/context';
 
 const categoriesUrl = 'https://www.themealdb.com/api/json/v1/1/categories.php';
 
 const Categories = () => {
-  const { searchCategory } = useGlobalContext();
+  const { searchCategory, executeScroll } = useGlobalContext();
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
 
-  const fetchCategories = async () => {
+  const fetchCategories = useCallback(async () => {
     setLoading(true);
     try {
       const response = await axios.get(`${categoriesUrl}`);
       const data = await response.data;
       setCategories(data.categories);
+      executeScroll();
       setLoading(false);
     } catch (error) {
       console.log(error);
       setLoading(false);
     }
-  };
+  }, [executeScroll]);
 
   useEffect(() => {
     fetchCategories();
-  }, []);
+  }, [fetchCategories]);
 
   const fetchRecipes = (category) => {
     searchCategory(category);
@@ -37,14 +38,14 @@ const Categories = () => {
 
   return (
     <div className="categories">
-       <div className="home__top">
-          <h2>My Pantry</h2>
-          <h4>Cook with what you have!</h4>
-        </div>
-        <div className="home__bodyInformation1">
-          <div className="home__info">
-            <div>
-              <img
+      <div className="categories__title">
+        <h2>My Pantry</h2>
+        <p>Cook with what you have!</p>
+      </div>
+      <div className="home__bodyInformation1">
+           <div className="home__info">
+             <div>
+               <img
                 className="img"
                 src="https://thumbs.dreamstime.com/b/heart-shape-various-vegetables-fruits-healthy-food-concept-isolated-white-background-140287808.jpg"
                 alt="sabdio"
@@ -152,12 +153,11 @@ const Categories = () => {
             </div>
             </div>
             </div>
-{/* categories    */}
 
-      <div className="categories__title">
-        <h2>Categories</h2>
-      </div>
-
+{/* //category */}
+     <div className="categories__title">
+         <h2>Categories</h2>
+       </div>
       <div className="sm:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-5">
         {categories.map((category) => {
           const { idCategory, strCategory, strCategoryThumb } = category;

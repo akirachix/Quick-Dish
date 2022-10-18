@@ -1,3 +1,4 @@
+// import axios from 'axios';
 import axios from 'axios';
 import {
   createContext,
@@ -17,6 +18,11 @@ const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [recipes, setRecipes] = useState([]);
   const [searchMeal, setSearchMeal] = useState('');
+  const [loadedMeals, setLoadedMeals] = useState('');
+
+  const executeScroll = () => {
+    loadedMeals.current.scrollIntoView();
+  };
 
   // Filter category recipes
   const searchCategory = async (category) => {
@@ -84,6 +90,8 @@ const AppProvider = ({ children }) => {
         loading,
         recipes,
         setSearchMeal,
+        setLoadedMeals,
+        executeScroll,
       }}
     >
       {children}

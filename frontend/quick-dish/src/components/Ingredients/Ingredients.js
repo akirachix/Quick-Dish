@@ -4,7 +4,8 @@ import { FaHeart } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 import { MdPlaylistAdd } from 'react-icons/md';
 import { BsThreeDotsVertical } from 'react-icons/bs';
-import { useGlobalContext } from '../../context/context';
+import { useGlobalContext} from '../../context/context';
+// import Select from 'react-select';
 
 const ingredientsUrl =
   'https://www.themealdb.com/api/json/v1/1/list.php?i=list';
@@ -13,6 +14,7 @@ const Ingredients = () => {
   const { searchIngredient } = useGlobalContext();
   const [loading, setLoading] = useState(false);
   const [ingredients, setIngredients] = useState([]);
+
 
   const fetchIngredients = async () => {
     setLoading(true);
@@ -26,14 +28,18 @@ const Ingredients = () => {
       console.log(error);
       setLoading(false);
     }
+
+
   };
 
   useEffect(() => {
     fetchIngredients();
+
   }, []);
 
   const fetchRecipes = (ingredient) => {
     searchIngredient(ingredient);
+    
   };
 
   if (loading) {
@@ -41,7 +47,14 @@ const Ingredients = () => {
   }
 
   return (
-    <div className="ingredients">
+    <div className="ingredients" >
+ {/* ///          */}
+    {/* <Select
+    Ingredients={ingredients}
+    selectMultiple={true}
+    touchUi={false}
+/> */}
+{/* /// */}
       <div className="ingredients__header">
         <div className="ingredients__title">
           <p>Select Ingredients</p>
@@ -56,14 +69,15 @@ const Ingredients = () => {
 
       <div className="sm:grid lg:grid-cols-2 xl:grid-cols-3 mt-5">
         {ingredients.map((ingredient) => {
-          const { idIngredient, strIngredient } = ingredient;
+          const { idIngredient, strIngredient, }  = ingredient;
+        
           return (
             <div
               className="ingredients__detail whitespace-nowrap"
-              key={idIngredient}
-              onClick={() => fetchRecipes(strIngredient)}
+              key={idIngredient}  
+              onClick={() => fetchRecipes(strIngredient) }
             >
-              <p className="truncate">{strIngredient}</p>
+              <p className="truncate">{strIngredient} </p>
             </div>
           );
         })}
