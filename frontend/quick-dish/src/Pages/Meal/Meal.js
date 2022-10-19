@@ -2,6 +2,8 @@ import './Meal.css';
 import axios from 'axios';
 import { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
+import { AiOutlineHeart } from 'react-icons/ai';
+
 
 const mealUrl = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
 
@@ -100,6 +102,11 @@ const Meal = () => {
           <p>
             {name} ({area})
           </p>
+          <div className='icons' >
+            <p>Save</p>
+            <div className='icon' >  <AiOutlineHeart /> </div>
+            
+          </div>
 
           <div className="meal__ingredients">
             <h1>Ingredients</h1>
@@ -115,8 +122,9 @@ const Meal = () => {
 
         <div className="meal__right">
           <h1>Directions</h1>
-          <p>{instructions}</p>
+          <p>{instructions}  </p> <br/>
         </div>
+     
       </div>
     </div>
   );

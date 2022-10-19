@@ -1,0 +1,39 @@
+.recipe {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .recipe__main {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .recipe__main > img {
+    width: 350px;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .recipe__main > div {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .recipe__main > div > h1 {
+    font-weight: 700;
+    font-size: 22px;
+  }
+  
+  .recipe__main > div > p {
+    width: 300px;
+  }
+  
+  .recipe__button {
+    background-color: #a05656;
+    color: white;
+    padding: 10px 15px;
+  }
