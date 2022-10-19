@@ -1,0 +1,18 @@
+.home {
+  height: 100%;
+  width: 100%;
+}
+
+.home__container {
+  display: flex;
+}
+
+.home__categories {
+  flex: 0.7;
+  height: calc(100vh - 200px);
+  overflow-y: scroll;  
+}
+
+.home__ingredients {
+  flex: 0.3;
+}

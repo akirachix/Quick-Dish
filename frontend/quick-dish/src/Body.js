@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from './Header/Header'
+import Header from './Headers/Header'
 import Home from './Home/Home'
 
 function Body() {
