@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { useGlobalContext } from '../../context/context';
+
 const Recipes = () => {
   const { recipes, loading } = useGlobalContext();
+
   return (
     <div className="recipes">
       <h2 className="recipes__title">Suggested Recipes</h2>
+
       {loading ? (
         <h1>Loading...</h1>
       ) : (
@@ -15,11 +18,12 @@ const Recipes = () => {
           {recipes?.map((recipe) => {
             const { idMeal, strMeal, strMealThumb } = recipe;
             return (
-              <Link to={`/meal/${idMeal}`}>
+              <Link to={`/${idMeal}`}>
                 <div className="recipes__detail" key={idMeal}>
                   <img src={strMealThumb} alt={strMeal} />
+
                   <div className="recipes__name">
-                    <h4 className="truncate">{strMeal}</h4>
+                    <h4>{strMeal}</h4>
                     <div>
                       <AiOutlineHeart />
                       <BsThreeDotsVertical />
@@ -31,10 +35,12 @@ const Recipes = () => {
           })}
         </div>
       )}
+
       {!recipes && !loading && (
-        <div className="recipes__error">No recipes found :sob:</div>
+        <div className="recipes__error">No recipes found 😭</div>
       )}
     </div>
   );
 };
+
 export default Recipes;

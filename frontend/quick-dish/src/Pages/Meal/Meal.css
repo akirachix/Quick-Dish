@@ -1,0 +1,57 @@
+.meal {
+  padding: 10px;
+ 
+}
+
+.meal__info {
+  display: flex;
+}
+
+.meal__left {
+  flex: 0.3;
+  margin: 10px;
+}
+
+.meal__left > img {
+  width: 400px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.meal__left > p {
+  font-weight: 700;
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+.meal__ingredients > h1 {
+  font-weight: 700;
+  font-size: 26px;
+}
+
+.meal__ingredient {
+  list-style: none;
+}
+
+.meal__ingredient::before {
+  content: '\2022';
+  color: #f9b639;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+}
+
+.meal__right {
+  flex: 0.7;
+  margin: 10px;
+}
+
+.meal__right > h1 {
+  font-weight: 700;
+  font-size: 26px;
+}
+
+.meal__right > p {
+  line-height: 2.5rem;
+}

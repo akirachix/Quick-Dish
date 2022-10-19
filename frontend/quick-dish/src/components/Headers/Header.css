@@ -14,7 +14,7 @@
   font-weight: 200;
   font-family: sans-serif;
 }
-
+  
 .header__search {
   width: 50%;
   margin-top: 30px;
@@ -35,3 +35,49 @@
   border: none;
   padding: 10px;  
 }
+
+
+
+
+
+
+
+
+
+/* .header {  
+  width: 100%;  
+  height: 200px;
+  padding: 30px;
+  background: #f9b639;
+  display: flex;  
+  justify-content: center;  
+  align-items: center;
+  flex-direction: column;
+}
+
+.header__text > h4 {
+  margin-top: 10px;
+  font-weight: 200;
+  font-family: sans-serif;
+}
+  
+.header__search {
+  width: 50%;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  background-color: #fff;
+  border-radius: 25px;
+}
+
+.header__searchIcon {
+  margin-left: 10px;
+  color: gray;
+}
+
+.header__searchInput {
+  outline: none;
+  border: none;
+  padding: 10px;  
+} */

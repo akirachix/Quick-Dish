@@ -1,13 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './login.css';
-import IconButton from '@material-ui/core/IconButton';
-// import recipe from ".../src/components/recipe.jpeg";
-// import InputLabel from "@material-ui/core/InputLabel";
-import Visibility from '@material-ui/icons/Visibility';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import Input from '@material-ui/core/Input';
-import { BrowserRouter as Router, Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 function Login() {
   const userRef = useRef();
@@ -24,23 +17,6 @@ function Login() {
   useEffect(() => {
     setErrMsg('');
   }, [email, password]);
-
-  const [values, setValues] = React.useState({
-    password: '',
-    showPassword: false,
-  });
-
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
-  const handlePasswordChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -70,9 +46,9 @@ function Login() {
           </p>
 
           <form onSubmit={handleSubmit}>
-            <h1>Sign In</h1>
+            <h1>Sign Up</h1>
             <input
-              type="text"
+              type="email"
               className="form__input"
               id="email"
               ref={userRef}
@@ -80,11 +56,10 @@ function Login() {
               onChange={(e) => setEmail(e.target.value)}
               value={email}
               required
-              placeholder=" Enter email"
+              placeholder=" Enter Email"
             ></input>{' '}
             <br />
-
-<input
+            <input
               type="password"
               className="form__input"
               id="password"
@@ -93,31 +68,16 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               value={password}
               required
-              placeholder=" Enter password"
+              placeholder=" Enter Password"
             ></input>{' '}
-
-            {/* <Input
-              className="form__input"
-              ref={userRef}
-              autoComplete="off"
-              id="password"
-              required
-              placeholder="password"
-              type={values.showPassword ? 'text' : 'password'}
-              onChange={handlePasswordChange('password')}
-              value={values.password}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                  >
-                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>
-              }
-            ></Input>{' '} */}
             <br />
+            <div className="box">
+              <label>
+                <input type="checkbox" name="text" />
+                Remember Me
+              </label>
+              <label className="forgetpswd">forget Password?</label>
+            </div>
             <div className="btn">
               <button>Get Started</button>
 

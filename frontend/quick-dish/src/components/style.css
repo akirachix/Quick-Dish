@@ -1,0 +1,70 @@
+body{
+    /* background: #bdc3c7;  
+    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  
+    background: linear-gradient(to right, #2c3e50, #bdc3c7);  */
+}
+
+.form{
+    background-color: white;
+    border-radius: 5px;
+    width: 550px;
+    margin: 20px auto;
+    padding: 20px;
+    margin-top: 88px;
+}
+
+.form__input{
+box-sizing: border-box;
+text-align: center;
+outline: none;
+margin: 10px;
+border: none;
+width: 350px;
+height: 40px;
+border: 1px solid #000000;
+border-radius: 61px
+
+}
+.form__input ::placeholder{
+    text-align: center;
+    font-size: 12px;
+    margin-left: -40px;
+    color: rgb(132, 132, 132);
+
+}
+
+
+.form-body{
+    text-align: center;
+    padding: 20px 10px;
+
+}
+
+.form-body > *{
+    padding: 10px;
+}
+.password input{
+    text-align: center;
+}
+
+.btn{
+    text-align: center;
+}
+.btn button{
+    color: rgb(255, 255, 255);
+    width: 350px;
+    height: 40px;
+    margin-top: 20px;
+    border: none;
+   background: #F9B639;
+   border-radius: 61px;
+   cursor: pointer;
+}
+
+.signin{
+    margin-top: 20px;
+}
+.signin span{
+    color: rgb(0, 132, 255);
+    cursor: pointer;
+}
