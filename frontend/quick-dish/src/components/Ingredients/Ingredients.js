@@ -1,15 +1,17 @@
-import axios from 'axios';
-import './Ingredients.css';
-import { FaHeart } from 'react-icons/fa';
-import { useState, useEffect } from 'react';
-import { MdPlaylistAdd } from 'react-icons/md';
-import { BsThreeDotsVertical } from 'react-icons/bs';
-import { useGlobalContext } from '../../context/context';
+import axios from "axios";
+import "./Ingredients.css";
+import { FaHeart } from "react-icons/fa";
+import { useState, useEffect } from "react";
+import { MdPlaylistAdd } from "react-icons/md";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { useGlobalContext } from "../../context/context";
+import { Link } from "react-router-dom";
+// import Select from 'react-select';
 import { Link } from 'react-router-dom';
 // import Select from 'react-select';
 
 const ingredientsUrl =
-  'https://www.themealdb.com/api/json/v1/1/list.php?i=list';
+  "https://www.themealdb.com/api/json/v1/1/list.php?i=list";
 
 const Ingredients = () => {
   const { searchIngredient } = useGlobalContext();
@@ -44,13 +46,6 @@ const Ingredients = () => {
 
   return (
     <div className="ingredients">
-      {/* ///          */}
-      {/* <Select
-    Ingredients={ingredients}
-    selectMultiple={true}
-    touchUi={false}
-/> */}
-      {/* /// */}
       <div className="ingredients__header">
         <div className="ingredients__title">
           <p>Select Ingredients</p>
@@ -64,10 +59,6 @@ const Ingredients = () => {
           >
             <MdPlaylistAdd />{' '}
           </Link>
-
-          {/* <a href="AddIngredients">
-            {" "}
-          </a> */}
           <FaHeart />
           <BsThreeDotsVertical />
         </div>

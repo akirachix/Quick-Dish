@@ -1,24 +1,24 @@
 // import axios from 'axios';
-import axios from "axios";
+import axios from 'axios';
 import {
   createContext,
   useContext,
   useEffect,
   useState,
   useCallback,
-} from "react";
+} from 'react';
 
 const AppContext = createContext();
 
-const categoryUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?c=";
-const ingredientUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?i=";
-const searchUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+const categoryUrl = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=';
+const ingredientUrl = 'https://www.themealdb.com/api/json/v1/1/filter.php?i=';
+const searchUrl = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 
 const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [recipes, setRecipes] = useState([]);
-  const [searchMeal, setSearchMeal] = useState("");
-  const [loadedMeals, setLoadedMeals] = useState("");
+  const [searchMeal, setSearchMeal] = useState('');
+  const [loadedMeals, setLoadedMeals] = useState('');
 
   //== a state containing an array of pantry objects
   const [pantry, setPantry] = useState([]);
