@@ -43,13 +43,6 @@ const Ingredients = () => {
 
   return (
     <div className="ingredients">
-      {/* ///          */}
-      {/* <Select
-    Ingredients={ingredients}
-    selectMultiple={true}
-    touchUi={false}
-/> */}
-      {/* /// */}
       <div className="ingredients__header">
         <div className="ingredients__title">
           <p>Select Ingredients</p>
@@ -63,10 +56,6 @@ const Ingredients = () => {
           >
             <MdPlaylistAdd />{" "}
           </Link>
-
-          {/* <a href="AddIngredients">
-            {" "}
-          </a> */}
           <FaHeart />
           <BsThreeDotsVertical />
         </div>

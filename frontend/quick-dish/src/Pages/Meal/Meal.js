@@ -1,7 +1,7 @@
 import './Meal.css';
 import axios from 'axios';
 import { useState, useEffect, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import { AiOutlineHeart } from 'react-icons/ai';
 
 
@@ -83,6 +83,9 @@ const Meal = () => {
   useEffect(() => {
     fetchMeal();
   }, [fetchMeal]);
+ function truncate(str, n){
+  return str?.length> n? str.substr(0, n-1)+ '....': str;
+ }
 
    function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + '...' : str;
@@ -127,8 +130,8 @@ const Meal = () => {
 
         <div className="meal__right">
           <h1>Directions</h1>
-          <p>{truncate(instructions, 400)}</p>                 
-          <button>View full recipe</button>
+          <p>{truncate(instructions, 400)}  </p> 
+          <a href="/SignUp" ><span>View Full Recipe</span></a>
         </div>
      
       </div>
