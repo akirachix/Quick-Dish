@@ -1,7 +1,7 @@
 import './Meal.css';
 import axios from 'axios';
 import { useState, useEffect, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import { AiOutlineHeart } from 'react-icons/ai';
 
 
@@ -126,8 +126,7 @@ const Meal = () => {
         <div className="meal__right">
           <h1>Directions</h1>
           <p>{truncate(instructions, 400)}  </p> 
-          <button>View Full Recipe</button>
-
+          <a href="/SignUp" ><span>View Full Recipe</span></a>
         </div>
      
       </div>

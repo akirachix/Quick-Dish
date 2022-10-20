@@ -78,13 +78,12 @@ margin-left: 120px;
 .icon{
   margin-left: 10px;
   margin-top: 7px;
-
-
 }
-.meal__right > button {
+.meal__right > a {
   background-color: #A05656;
     color: white;
     font-size: 13px;
     font-weight: bold;
-    padding: 10px 15px;
+    padding: 20px;
+    /* margin-top: 20%; */
 }
