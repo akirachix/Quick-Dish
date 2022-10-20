@@ -14,7 +14,7 @@ const AddIngredients = () => {
 	const handleAddButtonClick = () => {
 		const newItem = {
 			itemName: inputValue,
-			quantity: 0,
+			quantity: 1,
 			isSelected: false,
 		};
 

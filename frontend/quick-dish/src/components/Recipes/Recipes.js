@@ -18,19 +18,20 @@ const Recipes = () => {
           {recipes?.map((recipe) => {
             const { idMeal, strMeal, strMealThumb } = recipe;
             return (
-              <Link to={`/meal/${idMeal}`}>
+             
                 <div className="recipes__detail" key={idMeal}>
                   <img src={strMealThumb} alt={strMeal} />
-
                   <div className="recipes__name">
                     <h4 className='truncate'>{strMeal}</h4>
                     <div>
+                    <Link to={`/meal/${idMeal}`}>
                       <AiOutlineHeart />
-                      <BsThreeDotsVertical />
+                      </Link>
                     </div>
+                    <BsThreeDotsVertical />
                   </div>
                 </div>
-              </Link>
+            
             );
           })}
         </div>

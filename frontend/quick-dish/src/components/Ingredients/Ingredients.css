@@ -37,7 +37,7 @@
   }
   
   .ingredients__detail:hover {
-    background: #920809;
+    background: #920809 !important;
     color: white;
   }
   

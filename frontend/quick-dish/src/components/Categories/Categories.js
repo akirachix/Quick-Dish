@@ -15,6 +15,10 @@ const Categories = () => {
   const { searchCategory, executeScroll } = useGlobalContext();
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3398c449b8a120e019d088aae7702584cf269989
   const fetchCategories = useCallback(async () => {
     setLoading(true);
     try {
@@ -28,9 +32,17 @@ const Categories = () => {
       setLoading(false);
     }
   }, [executeScroll]);
+<<<<<<< HEAD
   useEffect(() => {
     fetchCategories();
   }, [fetchCategories]);
+=======
+
+  useEffect(() => {
+    fetchCategories();
+  }, [fetchCategories]);
+
+>>>>>>> 3398c449b8a120e019d088aae7702584cf269989
   const fetchRecipes = (category) => {
     searchCategory(category);
   };
@@ -151,6 +163,10 @@ const Categories = () => {
             </div>
             </div>
             </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3398c449b8a120e019d088aae7702584cf269989
 {/* //category */}
      <div className="categories__title">
          <h2>Categories</h2>
