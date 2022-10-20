@@ -81,3 +81,10 @@ margin-left: 120px;
 
 
 }
+.meal__right > button {
+  background-color: #A05656;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 10px 15px;
+}

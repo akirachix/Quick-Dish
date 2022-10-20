@@ -83,6 +83,9 @@ const Meal = () => {
   useEffect(() => {
     fetchMeal();
   }, [fetchMeal]);
+ function truncate(str, n){
+  return str?.length> n? str.substr(0, n-1)+ '....': str;
+ }
 
   const { name, image, instructions, area, ingredients } = meal;
 
@@ -122,7 +125,9 @@ const Meal = () => {
 
         <div className="meal__right">
           <h1>Directions</h1>
-          <p>{instructions}  </p> <br/>
+          <p>{truncate(instructions, 400)}  </p> 
+          <button>View Full Recipe</button>
+
         </div>
      
       </div>
