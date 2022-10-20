@@ -1,6 +1,3 @@
-
-
-// import axios from 'axios';
 import axios from "axios";
 import {
   createContext,
@@ -22,6 +19,7 @@ const AppProvider = ({ children }) => {
   const [searchMeal, setSearchMeal] = useState("");
   const [loadedMeals, setLoadedMeals] = useState("");
 
+
   //== a state containing an array of pantry objects
   const [pantry, setPantry] = useState([]);
 
@@ -35,7 +33,7 @@ const AppProvider = ({ children }) => {
 
     try {
       const response = await axios.get(`${categoryUrl}${category}`);
-      const data = await response.data;
+      const data = await response.data;      
       const { meals } = data;
       setRecipes(meals);
       setTimeout(() => {

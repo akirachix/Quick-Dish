@@ -10,7 +10,7 @@ import { useGlobalContext } from '../../context/context';
 const Home = () => {
   const { setLoadedMeals } = useGlobalContext();
 
-  const recipesRef = useRef(null);
+  const recipesRef = useRef(null);  
 
   useEffect(() => {
     setLoadedMeals(recipesRef);

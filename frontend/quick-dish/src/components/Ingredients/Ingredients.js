@@ -6,7 +6,6 @@ import { MdPlaylistAdd } from "react-icons/md";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { useGlobalContext } from "../../context/context";
 import { Link } from "react-router-dom";
-// import Select from 'react-select';
 
 const ingredientsUrl =
   "https://www.themealdb.com/api/json/v1/1/list.php?i=list";

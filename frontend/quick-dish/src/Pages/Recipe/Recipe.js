@@ -54,7 +54,7 @@ const Recipe = () => {
 
 
       <div>
-        <h2 className="recipes__title">Similar Recipes</h2>
+        <h2 className="recipes__title mt-5 ml">You might also like</h2>
 
         {loading ? (
           <h1>Loading...</h1>
