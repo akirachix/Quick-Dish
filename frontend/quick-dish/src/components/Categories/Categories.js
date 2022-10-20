@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import './Categories.css';
 // import axios from 'axios';
 // // import { useState, useEffect } from 'react';
@@ -11,8 +12,17 @@ import axios from 'axios';
 import { useState, useEffect, useCallback } from 'react';
 import { useGlobalContext } from '../../context/context';
 const categoriesUrl = 'https://www.themealdb.com/api/json/v1/1/categories.php';
+=======
+import "./Categories.css";
+import axios from "axios";
+import { useState, useEffect, useCallback } from "react";
+import { useGlobalContext } from "../../context/context";
+
+const categoriesUrl = "https://www.themealdb.com/api/json/v1/1/categories.php";
+
+>>>>>>> 6830179d35494a8afdfffaed05e2aa681a6fbd13
 const Categories = () => {
-  const { searchCategory, executeScroll } = useGlobalContext();
+  const { searchCategory, executeScroll, pantry } = useGlobalContext();
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
 <<<<<<< HEAD
@@ -55,7 +65,9 @@ const Categories = () => {
         <h2>My Pantry</h2>
         <p>Cook with what you have!</p>
       </div>
+
       <div className="home__bodyInformation1">
+<<<<<<< HEAD
            <div className="home__info">
              <div>
                <img
@@ -171,6 +183,36 @@ const Categories = () => {
      <div className="categories__title">
          <h2>Categories</h2>
        </div>
+=======
+        {pantry && pantry.length > 0 ? (
+          <>
+            {pantry.map((item, index) => (
+              <div key={index} className="home__info">
+                <div>
+                  <img
+                    className="img"
+                    src="https://thumbs.dreamstime.com/b/heart-shape-various-vegetables-fruits-healthy-food-concept-isolated-white-background-140287808.jpg"
+                    alt="sabdio"
+                  />
+                </div>
+
+                <div className="aside__text">
+                  <h3 className="veg">{item.itemName}</h3>
+                  <h5>You have {item.quantity} left</h5>
+                </div>
+              </div>
+            ))}
+          </>
+        ) : (
+          <div>No ingredients found</div>
+        )}
+      </div>
+
+      {/* //category */}
+      <div className="categories__title">
+        <h2>Categories</h2>
+      </div>
+>>>>>>> 6830179d35494a8afdfffaed05e2aa681a6fbd13
       <div className="sm:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-5">
         {categories.map((category) => {
           const { idCategory, strCategory, strCategoryThumb } = category;
@@ -189,6 +231,7 @@ const Categories = () => {
     </div>
   );
 };
+<<<<<<< HEAD
 export default Categories;
 
 
@@ -398,3 +441,7 @@ export default Categories;
 // };
 
 // export default Categories;
+=======
+
+export default Categories;
+>>>>>>> 6830179d35494a8afdfffaed05e2aa681a6fbd13
