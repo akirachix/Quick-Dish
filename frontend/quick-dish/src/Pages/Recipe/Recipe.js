@@ -5,14 +5,21 @@ import { Link, useParams } from 'react-router-dom';
 import { useGlobalContext } from '../../context/context';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { BsThreeDotsVertical } from 'react-icons/bs';
+import {MdKeyboardArrowLeft} from 'react-icons/md';
+
+
+
 const mealUrl = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
+
 const Recipe = () => {
   const { recipes } = useGlobalContext();
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
   const [meal, setMeal] = useState({});
+
   const fetchMeal = useCallback(async () => {
     setLoading(true);
+
     try {
       const response = await axios.get(`${mealUrl}${id}`);
       const data = await response.data;
@@ -26,12 +33,15 @@ const Recipe = () => {
       setLoading(false);
     }
   }, [id]);
+
   useEffect(() => {
     fetchMeal();
   }, [fetchMeal]);
+
   if (loading) {
     return <h1>Loading...</h1>;
   }
+
   return (
     <div className="recipe">
       <div className="recipe__main">
@@ -43,8 +53,26 @@ const Recipe = () => {
           </Link>
         </div>
       </div>
+    <div className='recipe__start'>
+      <div>
+      <Link
+            to={{
+              pathname: "/Home",
+            }}
+          >
+            <MdKeyboardArrowLeft />{" "}
+          </Link>
+      </div>
+      <div >
+      <h2>Recipe</h2>
+      </div>
+      
+     </div>
+    
+         
       <div>
         <h2 className="recipes__title">You might also like</h2>
+
         {loading ? (
           <h1>Loading...</h1>
         ) : (

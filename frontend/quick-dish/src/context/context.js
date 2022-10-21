@@ -1,4 +1,4 @@
-// import axios from 'axios';
+
 import axios from "axios";
 import {
   createContext,
@@ -7,20 +7,26 @@ import {
   useState,
   useCallback,
 } from "react";
+
 const AppContext = createContext();
+
 const categoryUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?c=";
 const ingredientUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?i=";
 const searchUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+
 const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [recipes, setRecipes] = useState([]);
   const [searchMeal, setSearchMeal] = useState("");
   const [loadedMeals, setLoadedMeals] = useState("");
+
   //== a state containing an array of pantry objects
   const [pantry, setPantry] = useState([]);
+
   const executeScroll = () => {
     loadedMeals.current.scrollIntoView();
   };
+
   // Filter category recipes
   const searchCategory = async (category) => {
     setLoading(true);

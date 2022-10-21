@@ -10,6 +10,12 @@
   flex: 0.3;
   margin: 10px;
 }
+.recipe__start{
+  display: flex;
+  margin-top: -12%;
+  padding-bottom: 20%;
+  
+}
 
 .meal__left > img {
   width: 400px;
@@ -27,10 +33,14 @@
 .meal__ingredients > h1 {
   font-weight: 700;
   font-size: 26px;
+  margin-left: -50px;
+  margin-top: 10px;
 }
 
 .meal__ingredient {
   list-style: none;
+text-align: left;
+margin-left: 120px;
 }
 
 .meal__ingredient::before {
@@ -53,4 +63,27 @@
 
 .meal__right > p {
   line-height: 2.5rem;
+}
+
+.meal__right{
+  display: inline;
+  /* text-align: ; */
+}
+
+.icons{
+  display: flex;
+  margin-left: 30%;
+  padding: 10px;
+  width: 25%;
+  color: white;
+  background-color: rgb(208, 82, 82);
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+.icon{
+  margin-left: 10px;
+  margin-top: 7px;
+
+
 }
