@@ -5,9 +5,8 @@ import SignUp from './Pages/SignUp/SignUp';
 import SignIn from './Pages/SignIn/SignIn';
 import Recipe from './Pages/Recipe/Recipe';
 import { Routes , Route } from 'react-router-dom';
-// import Recipe from './pages/Recipe/Recipe';
-// import Recipe from './Pages/Recipe/Recipe';
-import AddIngredients from './components/AddIngredients';
+import AddIngredients from './components/AddingIngredients/AddIngredients';
+import Favourites from './Pages/Favourites/Favourites';
 
 const App = () => {
   return (
@@ -21,6 +20,7 @@ const App = () => {
         <Route path="/:id" element={<Recipe />} />
         <Route path="/Home" element={<Home />} /> 
         <Route path="/Recipe" element={<Recipe />} /> 
+        <Route path="/Favourite" element={<Favourites />} />
 
        
       </Routes>

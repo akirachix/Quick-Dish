@@ -7,20 +7,21 @@ const categoriesUrl = "https://www.themealdb.com/api/json/v1/1/categories.php";
 
 const Categories = () => {
   const { searchCategory, executeScroll, pantry } = useGlobalContext();
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
 
   const fetchCategories = useCallback(async () => {
-    setLoading(true);
+    ;
+    // setLoading(true)
     try {
       const response = await axios.get(`${categoriesUrl}`);
       const data = await response.data;
       setCategories(data.categories);
       executeScroll();
-      setLoading(false);
+      // setLoading(false);
     } catch (error) {
       console.log(error);
-      setLoading(false);
+      // setLoading(false);
     }
   }, [executeScroll]);
 
@@ -32,9 +33,9 @@ const Categories = () => {
     searchCategory(category);
   };
 
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
+  // if (loading) {
+  //   return <h2>Loading...</h2>;
+  // }
 
   return (
     <div className="categories">

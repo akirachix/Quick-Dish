@@ -32,6 +32,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  
 }
 
 .main-container {
@@ -41,6 +42,7 @@
   border-radius: 5px;
   padding: 20px;
   box-shadow: 10px 10px 26px 0px rgba(0, 0, 0, 0.35);
+  overflow: auto;
 }
 
 .title {
@@ -70,7 +72,6 @@
   box-sizing: border-box;
   border: none;
   background: transparent;
-  /* color: #ec645b; */
   width: 100%;
   height: 30px;
 }
@@ -102,7 +103,6 @@ input:focus {
 }
 
 .item-action-buttons {
-  /* width: 30%; */
   display: flex;
   justify-content: space-between;
 }

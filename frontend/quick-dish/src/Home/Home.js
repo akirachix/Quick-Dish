@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Home.css"
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
@@ -6,6 +6,10 @@ import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
 function Home() {
+  const [open,modelOpen] = useState(false);
+  // const handleToggle = () => {
+  //   setState(!open);
+  // }
   return (
     <div className="home">
         <div className='home__right'>
@@ -203,7 +207,7 @@ function Home() {
          <div className='left__top'>
            <h4>Select Ingredients</h4>
            <div className='left__icon'>
-            <PlaylistAddIcon />
+            <PlaylistAddIcon onClick = {handleToggle} />
             <FavoriteIcon />
             <MoreVertOutlinedIcon />
            </div>

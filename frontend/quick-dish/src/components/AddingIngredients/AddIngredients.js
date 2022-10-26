@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./AddIng.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import {
   faChevronRight,
   faChevronLeft,
@@ -9,7 +10,7 @@ import {
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { useGlobalContext } from "../context/context";
+import { useGlobalContext } from "../../context/context";
 
 const AddIngredients = () => {
   const { setPantry } = useGlobalContext();
@@ -60,8 +61,10 @@ const AddIngredients = () => {
     newItems[index].isSelected = !newItems[index].isSelected;
 
     setItems(newItems);
+
   };
 
+  
   return (
     <div className="app-background">
       <div className="main-container">
@@ -121,6 +124,7 @@ const AddIngredients = () => {
             </div>
           ))}
         </div>
+
         <div className="btn" type="submit">
           <div>
             <Link to="/" onClick={handleDone}>
@@ -128,6 +132,7 @@ const AddIngredients = () => {
             </Link>
           </div>
         </div>
+        
       </div>
     </div>
   );

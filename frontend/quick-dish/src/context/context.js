@@ -37,7 +37,7 @@ const AppProvider = ({ children }) => {
       setRecipes(meals);
       setTimeout(() => {
         setLoading(false);
-      }, 2000);
+      }, 200);
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -53,7 +53,7 @@ const AppProvider = ({ children }) => {
       setRecipes(meals);
       setTimeout(() => {
         setLoading(false);
-      }, 2000);
+      }, 200);
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -69,7 +69,7 @@ const AppProvider = ({ children }) => {
       setRecipes(meals);
       setTimeout(() => {
         setLoading(false);
-      }, 2000);
+      }, 200);
     } catch (error) {
       console.log(error);
       setLoading(false);

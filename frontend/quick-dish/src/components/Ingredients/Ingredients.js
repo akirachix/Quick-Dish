@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { MdPlaylistAdd } from "react-icons/md";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { useGlobalContext } from "../../context/context";
-import { Link } from "react-router-dom";
+import AddIngredients from "../AddingIngredients/AddIngredients";
 // import Select from 'react-select';
 
 const ingredientsUrl =
@@ -15,6 +15,12 @@ const Ingredients = () => {
   const { searchIngredient } = useGlobalContext();
   const [loading, setLoading] = useState(false);
   const [ingredients, setIngredients] = useState([]);
+  const [open,modelOpen] = useState(false);
+
+  // Addingredient popup
+  const handleToggle = () => {
+    modelOpen(!open);
+  }
 
   const fetchIngredients = async () => {
     setLoading(true);
@@ -44,12 +50,6 @@ const Ingredients = () => {
 
   return (
     <div className="ingredients">
-      {/* ///          */}
-      {/* <Select
-    Ingredients={ingredients}
-    selectMultiple={true}
-    touchUi={false}
-/> */}
       {/* /// */}
       <div className="ingredients__header">
         <div className="ingredients__title">
@@ -57,18 +57,17 @@ const Ingredients = () => {
         </div>
 
         <div className="ingredients__icons">
-          <Link
-            to={{
-              pathname: "/AddIngredients",
-            }}
-          >
-            <MdPlaylistAdd />{" "}
-          </Link>
+        
+          <MdPlaylistAdd onClick={handleToggle}/>
 
           <FaHeart />
           <BsThreeDotsVertical />
         </div>
       </div>
+      {open ? (
+        ""
+      ) :(<AddIngredients/>)}
+      
 
       <div className="sm:grid lg:grid-cols-2 xl:grid-cols-3 mt-5">
         {ingredients.map((ingredient) => {

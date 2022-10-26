@@ -1,11 +1,7 @@
 import './Meal.css';
 import React, {Component} from 'react';
 import axios from 'axios';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-// import axios from '../axios';
 import { Link } from 'react-router-dom';
-
 import { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { AiOutlineHeart } from 'react-icons/ai';
@@ -111,8 +107,25 @@ const Meal = () => {
             {name} ({area})
           </p>
           <div className='icons' >
-            <p>Save</p>
+          <Link
+            to={{
+              pathname: "/Favourites",
+            }}
+          >
+            <p>Save</p> {" "}
+          </Link>
+
+            {/* <p>Save</p> */}
             <div className='icon' >  <AiOutlineHeart /> </div>
+            {/* <div>
+      <Link
+            to={{
+              pathname: "/Favourites",
+            }}
+          >
+            <p>Save</p> {" "}
+          </Link>
+      </div>  */}
             
           </div>
 
@@ -127,8 +140,6 @@ const Meal = () => {
           </Link>
       </div> 
      </div>
-
-      
 
           <div className="meal__ingredients">
             <h1>Ingredients</h1>
