@@ -6,7 +6,7 @@ import { useGlobalContext } from "../../context/context";
 const categoriesUrl = "https://www.themealdb.com/api/json/v1/1/categories.php";
 
 const Categories = () => {
-  const { searchCategory, executeScroll, pantry } = useGlobalContext();
+  const { searchCategory,  pantry } = useGlobalContext();
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
 
@@ -16,13 +16,13 @@ const Categories = () => {
       const response = await axios.get(`${categoriesUrl}`);
       const data = await response.data;
       setCategories(data.categories);
-      executeScroll();
+      // executeScroll();
       setLoading(false);
     } catch (error) {
       console.log(error);
       setLoading(false);
     }
-  }, [executeScroll]);
+  }, []);
 
   useEffect(() => {
     fetchCategories();

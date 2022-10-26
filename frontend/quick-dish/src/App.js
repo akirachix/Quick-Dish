@@ -7,11 +7,13 @@ import { Routes , Route } from 'react-router-dom';
 // import Recipe from './pages/Recipe/Recipe';
 import Recipe from './Pages/Recipe/Recipe';
 import AddIngredients from './components/AddIngredients';
+// import Headers from './components/Headers/Headers';
 
 const App = () => {
   return (
     <div className="App">
       <Routes>
+      {/* <Route path="/" element={<Headers />} /> */}
         <Route path="/" element={<Home />} />
         {/* <Route path="/signin" element={<SignIn />} /> */}
         <Route path="/signup" element={<SignUp />} />        
