@@ -73,7 +73,7 @@ const Meal = () => {
 
       setTimeout(() => {
         setLoading(false);
-      }, 2000);
+      }, 800);
     } catch (error) {
       console.log(error);
       setLoading(false);

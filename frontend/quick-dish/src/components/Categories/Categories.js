@@ -52,7 +52,7 @@ const Categories = () => {
                   <img
                     className="img"
                     src="https://thumbs.dreamstime.com/b/heart-shape-various-vegetables-fruits-healthy-food-concept-isolated-white-background-140287808.jpg"
-                    alt="sabdio"
+                    alt="quickdish"
                   />
                 </div>
 
