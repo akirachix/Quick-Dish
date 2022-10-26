@@ -85,7 +85,6 @@ const AppProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         searchCategory,
-        searchCategory,
         searchIngredient,
         loading,
         recipes,

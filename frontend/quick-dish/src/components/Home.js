@@ -4,14 +4,17 @@ import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutline
 import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+
 function Home() {
   return (
     <div className="home">
         <div className='home__right'>
            <div className='home__top'>
             <h2>My Pantry</h2>
-            <h4>Cook with what you have!</h4>
+          <h4>Cook with what you have!</h4>
            </div>
+
+
            <div className="home__bodyInformation1">
            <div className='home__info'>
              <div>

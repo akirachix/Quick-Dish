@@ -11,13 +11,8 @@ const Home = () => {
   const { setLoadedMeals } = useGlobalContext();
 
   const recipesRef = useRef(null);
-<<<<<<< HEAD
- 
-   useEffect(() => {
-=======
 
   useEffect(() => {
->>>>>>> 3398c449b8a120e019d088aae7702584cf269989
     setLoadedMeals(recipesRef);
   }, [setLoadedMeals]);
 
@@ -28,10 +23,6 @@ const Home = () => {
       <div className="home__container">
         <div className="home__categories">
           <Categories />
-<<<<<<< HEAD
-          <Recipes />
-=======
->>>>>>> 3398c449b8a120e019d088aae7702584cf269989
           <div ref={recipesRef}>
             <Recipes />
           </div>
@@ -43,8 +34,4 @@ const Home = () => {
       </div>
   );
 };
-<<<<<<< HEAD
-=======
-
->>>>>>> 3398c449b8a120e019d088aae7702584cf269989
 export default Home;
