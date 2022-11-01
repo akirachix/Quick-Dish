@@ -1,36 +1,96 @@
 import './SignIn.css';
-import { Link } from 'react-router-dom';
+import React, {useRef, useState, useEffect } from "react";
+
+import {Navigate} from 'react-router-dom';
 
 const SignIn = () => {
+  const userRef= useRef()
+  const errRef= useRef()
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errMsg, setErrMsg] = useState('')
+  const [success, setSuccess] = useState(false)
+
+useEffect(()=>{
+  userRef.current.focus()
+}, []
+);
+useEffect(()=>{
+  setErrMsg('');
+}, [ email, password]
+);
+
+const handleSubmit = async(e)=>{
+      e.preventDefault();
+          console.log(email, password);
+          setEmail('')
+          setPassword('')  
+          setSuccess(true)
+          Navigate('/Home')
+  
+  }
   return (
+    <> 
+      {success ? (
+        
+          <section >
+                <Navigate exact to='/Home'>Login</Navigate>
+          </section>
+      ): (
+        
     <div className="signin">
-      <form className="signin__form">
+        <p ref={errRef} className={errMsg? "errmsg":"offscreen"} 
+      aria-live="assertive" >{errMsg}</p>
+
+      <form className="signin__form" onSubmit={ handleSubmit} >
         <h1>Sign In</h1>
 
-        <input
+        <input type="text"
           className="signin__input"
-          type="email"
-          required
-          placeholder="Enter email address"
+          id="email" 
+                    ref={userRef}
+                    autoComplete="off"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    required
+                    
+                    placeholder=" enter email"
         />
-        <input
+        <input type="password"
           className="signin__input"
-          type="password"
-          required
-          placeholder="Create password"
+                     ref={userRef}
+                      autoComplete="off"
+                      id="password"
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                      value={password}
+                      placeholder="password"
+                     
         />
-        <button className="signin__button">Get Started</button>
+         <div className='box'>
+            <label>
+                <input type="checkbox" name="text" />
+                  Remember Me
+               </label>
+                <label className='forgetpswd'>forget Password?</label>
+                  </div>
+        <button className="signin__button" >Get Started</button>
 
-        <p className="signin__text">or</p>
+        <p className="signin__text">___________Or___________</p>
 
         <p className="signin__member">
           Not a member yet?{' '}
           <span>
-            <Link to="/signup">Sign up</Link>
+          <a href="/" ><span>Sign up </span></a>
           </span>
         </p>
       </form>
+     
     </div>
+      )}
+     </>
+  
   );
 };
 

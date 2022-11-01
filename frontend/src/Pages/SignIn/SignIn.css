@@ -1,5 +1,5 @@
 .signin {
-    width: 100%;
+    width: 90%;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -7,8 +7,7 @@
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-      url(https://unsplash.com/photos/oPBjWBCcAEo);
+  
   }
   
   .signin__form {
@@ -25,7 +24,8 @@
   
   .signin__form > h1 {
     font-weight: bold;
-    font-size: 22px;
+    font-size: 30px;
+    text-align: center;
   }
   
   .signin__input {
@@ -52,6 +52,8 @@
   
   .signin__member {
     font-size: 18px;
+    text-align: center;
+    padding: 10px;
   }
   
   .signin__member > span {
@@ -59,3 +61,17 @@
     text-decoration: underline;
   }
   
+.box{
+    color: #000000;
+    margin-left: 50px;
+    display: flex;
+    padding: 10px;
+
+ }
+.box .forgetpswd{
+    padding: 10px;
+    margin-left: 60px;
+    color: red;
+    margin-top: -10px;
+    
+}
