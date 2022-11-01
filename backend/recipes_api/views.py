@@ -51,6 +51,12 @@ def search_recipe(request, meal):
 
 
 @api_view(['GET'])
+def fetch_meal(request, id):
+    recipe = requests.get("https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id)
+    response = recipe.json()
+    return Response(response)
+
+@api_view(['GET'])
 def fetch_favorites(request):
     favorites = Favorite.objects.all()
     serializer = FavoriteSerializer(favorites, many=True)

@@ -4,8 +4,6 @@ import { useParams } from 'react-router-dom';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { useState, useEffect, useCallback } from 'react';
 
-const mealUrl = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
-
 const Meal = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
@@ -15,7 +13,7 @@ const Meal = () => {
     setLoading(true);
 
     try {
-      const response = await axios.get(`${mealUrl}${id}`);
+      const response = await axios.get(`/api/meal/${id}`);
       const data = await response.data;
       const { meals } = data;
       if (meals) {

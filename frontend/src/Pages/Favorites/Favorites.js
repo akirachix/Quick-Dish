@@ -2,7 +2,7 @@ import './Favorites.css';
 import axios from 'axios';
 import { useRef, useState, useEffect } from 'react';
 import { BsThreeDotsVertical } from 'react-icons/bs';
-import { AiOutlineHeart, AiOutlineSearch, AiFillHeart } from 'react-icons/ai';
+import { AiOutlineSearch, AiFillHeart } from 'react-icons/ai';
 
 const Favorites = () => {
   const inputRef = useRef(null);
