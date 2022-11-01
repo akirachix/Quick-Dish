@@ -8,14 +8,16 @@ const AppProvider = ({ children }) => {
   const [recipes, setRecipes] = useState([]);
   const [loadedMeals, setLoadedMeals] = useState('');
   const [pantry, setPantry] = useState([]);
+  const [isLiked, setIsLiked] = useState(false)
 
   const executeScroll = () => {
     loadedMeals?.current.scrollIntoView();    
-  };
+  };  
 
   // Filter category recipes
-  const searchCategory = async (category) => {
+  const searchCategory = async (category) => {    
     setLoading(true);
+    setIsLiked(false)
     executeScroll();
 
     try {
@@ -34,8 +36,9 @@ const AppProvider = ({ children }) => {
   };
 
   // Filter ingredient recipes
-  const searchIngredient = async (ingredient) => {
+  const searchIngredient = async (ingredient) => {    
     setLoading(true);
+    setIsLiked(false)
     executeScroll();
 
     try {
@@ -54,8 +57,9 @@ const AppProvider = ({ children }) => {
   };
 
   // Search meals
-  const searchMeals = async (searchMeal) => {
+  const searchMeals = async (searchMeal) => {    
     setLoading(true);
+    setIsLiked(false)
     executeScroll();
 
     try {
@@ -74,15 +78,24 @@ const AppProvider = ({ children }) => {
   };
 
   // Add Favorites
-  const addFavorites = async (id, name, image) => {    
+  const addFavorites = async (identifier, name, image) => {    
     try {
-      const response = await axios.post('/api/add-favorite/', {identifier: id, image, name})
+      const response = await axios.post('/api/add-favorite/', {identifier, image, name})
       const data = await response.data
       console.log(data)      
       return data      
     } catch (error) {
       console.log(error)      
     }
+  }
+
+  const like = (index, identifier, name, image) => {
+    addFavorites(identifier, name, image)
+    setIsLiked(prevState => ({...isLiked, [index]: !prevState[index]}))   
+  }
+
+  const unlike = (index) => {
+    setIsLiked(prevState => ({...isLiked, [index]: !prevState[index]}))   
   }
 
   return (
@@ -96,8 +109,10 @@ const AppProvider = ({ children }) => {
         setLoadedMeals,
         executeScroll,
         pantry,
-        setPantry,
-        addFavorites,
+        setPantry,        
+        like,
+        unlike,
+        isLiked
       }}
     >
       {children}

@@ -16,12 +16,23 @@ const Favorites = () => {
       const data = await response.data;
       setLoading(false);
       setFavorites(data);
-      console.log(data);
+      // console.log(data)      
     } catch (error) {
       console.log(error);
       setLoading(false);
     }
   };
+
+  const removeFavorite = async (id) => {    
+    try {
+      const response = await axios.delete(`/api/remove-favorite/${id}`)
+      const data = await response.data
+      console.log(data)    
+      fetchFavorites()
+    } catch (error) {
+      console.log(error)
+    } 
+  }
 
   useEffect(() => {
     fetchFavorites();
@@ -64,7 +75,7 @@ const Favorites = () => {
                 <div className="favorites__name">
                   <h4>{name}</h4>
                   <div>
-                    <AiFillHeart style={{color: '#DE1A1A'}} />
+                    <AiFillHeart style={{color: '#DE1A1A'}} onClick={() => removeFavorite(id)} />
                     <BsThreeDotsVertical />
                   </div>
                 </div>
@@ -72,6 +83,10 @@ const Favorites = () => {
             );
           })}
       </div>
+
+      {favorites.length <= 0  && !loading && (
+        <div>Click the heart button on recipes to add favorites</div>
+      )}
     </div>
   );
 };

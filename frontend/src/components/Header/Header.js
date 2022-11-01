@@ -1,6 +1,6 @@
 import './Header.css';
-import { useRef, useEffect } from 'react';
 import logo from '../../images/logo.png';
+import { useRef, useEffect } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useGlobalContext } from '../../context/context';
 

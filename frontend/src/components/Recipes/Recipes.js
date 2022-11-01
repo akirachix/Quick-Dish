@@ -1,28 +1,27 @@
 import './Recipes.css';
 import { Link } from 'react-router-dom';
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { useGlobalContext } from '../../context/context';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 
 const Recipes = () => {
-  const { recipes, loading, setLoadedMeals, addFavorites } = useGlobalContext();  
-  const [isLiked, setIsLiked]  = useState(false)
-
+  const { recipes, loading, setLoadedMeals, like, unlike, isLiked } = useGlobalContext();  
+  
   const recipesRef = useRef(null)
 
   useEffect(() => {
     setLoadedMeals(recipesRef);
   }, [setLoadedMeals]);
 
-  const handleLike = (index, id, name, image) => {    
-    addFavorites(id, name, image)    
-    setIsLiked(prevState => ({...isLiked, [index]: !prevState[index]}))    
-  }
+  // const handleLike = (index, identifier, name, image) => {    
+  //   addFavorites(identifier, name, image)    
+  //   setIsLiked(prevState => ({...isLiked, [index]: !prevState[index]}))    
+  // }
 
-  const handleUnlike = (index, idMeal, strMeal, strMealThumb) => {
-    setIsLiked(prevState => ({...isLiked, [index]: !prevState[index]}))    
-  }
+  // const handleUnlike = (index, idMeal, strMeal, strMealThumb) => {
+  //   setIsLiked(prevState => ({...isLiked, [index]: !prevState[index]}))    
+  // }
 
   return (
     <div className="recipes">      
@@ -44,9 +43,9 @@ const Recipes = () => {
                     <h4>{strMeal}</h4>
                     <div>
                       {isLiked[`${index}`] ? (
-                        <AiFillHeart style={{color: '#DE1A1A'}} onClick={() => handleUnlike(index, idMeal, strMeal, strMealThumb)}/>
+                        <AiFillHeart style={{color: '#DE1A1A'}} onClick={() => unlike(index, idMeal, strMeal, strMealThumb)}/>
                       ) : (
-                        <AiOutlineHeart onClick={() => handleLike(index, idMeal, strMeal, strMealThumb )} />
+                        <AiOutlineHeart onClick={() => like(index, idMeal, strMeal, strMealThumb )} />
                       )}                      
                       <BsThreeDotsVertical />
                     </div>
