@@ -1,18 +1,20 @@
 import './SignUp.css';
 import { useRef, useState, useEffect } from "react"
+import axios from 'axios'
 import React from "react";
-import { BrowserRouter as Router, Link, Navigate } from "react-router-dom";
+import {  Navigate} from "react-router-dom";
 
 
 const SignUp = () => {
-    const userRef= useRef()
+  const userRef= useRef()
   const errRef= useRef()
-  const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+  const [firstName] = useState('');
+    const [lastName] = useState('');
+    const [email] = useState('');
+    const [password] = useState('');
     const [errMsg, setErrMsg] = useState('')
     const [success, setSuccess] = useState(false)
+    
     useEffect(()=>{
       userRef.current.focus()
   }, []
@@ -21,16 +23,47 @@ const SignUp = () => {
     setErrMsg('');
 }, [ firstName, password]
 );
-const handleSubmit = async(e)=>{
-      e.preventDefault();
-      console.log(firstName, password)
-      setFirstName('')
-      setEmail('')
-      setLastName('')
-      setPassword('');
-      setSuccess(true)
-      Navigate('/Login')
+
+
+const [user,setUser] = useState({
+  first_name:"",
+  last_name:"",
+  email: "",
+  password:"",
+})
+
+const handleChange = e =>{
+  const {name,value} = e.target
+  setUser({
+  ...user,//spread operator 
+  [name]:value
+
+  })
   
+  }
+
+const handleSubmit = ()=>{
+      setSuccess(true) 
+
+      const 
+      {first_name,last_name,email,password} = user
+      if (first_name && last_name && email && password){
+        axios.post("https://quick-dish",user )
+        .then(res=>{
+          console.log(res)
+          // Navigate("/Login")
+      })
+      .catch(error=>{
+        console.log(error)
+
+    })
+    }
+    else{
+      console.log(user)
+   alert("invalid input")
+  };
+
+      
   }
 
   return (
@@ -39,7 +72,7 @@ const handleSubmit = async(e)=>{
          {success ? (
           
             <section >
-                  <Navigate exact to='/Login'>SignUp</Navigate>
+                  {/* <Navigate exact to='/Login'>SignUp</Navigate> */}
             </section>
         ): (
     <div className="signup">
@@ -51,8 +84,8 @@ const handleSubmit = async(e)=>{
         <input
           className="signup__input"
             type="text"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            name='firstName'
+            onChange={handleChange}
             id="firstName"
             autoComplete="off"
             ref={userRef}
@@ -62,8 +95,8 @@ const handleSubmit = async(e)=>{
       <input
           className="signup__input"
           type="text"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
+          name='lastName'
+          onChange={handleChange}
           id="lastName"
           ref={userRef}
           autoComplete="off"
@@ -76,8 +109,8 @@ const handleSubmit = async(e)=>{
           type="email"
           ref={userRef}
           autoComplete="off"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
+          onChange={handleChange}
+          name="email"
           required
           placeholder=" enter email"
     ></input>        
@@ -87,9 +120,9 @@ const handleSubmit = async(e)=>{
           type="password"
           required
           ref={userRef}
+          name="password"
           autoComplete="off"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
+          onChange={handleChange}
           placeholder="Create password"
 
         ></input> 
