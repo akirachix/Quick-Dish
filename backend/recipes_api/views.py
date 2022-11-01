@@ -3,6 +3,9 @@ from .models import Favorite
 from .serializers import UserSerializer, FavoriteSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+# from drf_yasg.utils import swagger_auto_schema
+
+
 
 
 # Create your views here.
@@ -14,6 +17,7 @@ def register_user(request):
         return Response(serializer.data)
     else:
         return Response(serializer.errors)
+
 
 
 @api_view(['GET'])

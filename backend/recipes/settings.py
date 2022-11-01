@@ -35,11 +35,16 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
 
     # My Apps
     'recipes_api',
-    'rest_framework'    
+    'rest_framework',
+    'drf_yasg',
+    'django.contrib.staticfiles',
+    
+    
+    
+       
 ]
 
 MIDDLEWARE = [
