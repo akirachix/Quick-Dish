@@ -2,7 +2,7 @@ import './SignUp.css';
 import { useRef, useState, useEffect } from "react"
 import axios from 'axios'
 import React from "react";
-import {  Navigate} from "react-router-dom";
+// import {  Navigate} from "react-router-dom";
 
 
 const SignUp = () => {
