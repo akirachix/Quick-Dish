@@ -16,6 +16,17 @@
     height: 100%;
     object-fit: cover;
   }
+  .recipe__start{
+    display: flex;
+    margin-top: -12%;
+    padding-bottom: 15%;
+  }
+  .recipe__start h2{
+    display: flex;
+    color: #ed4025;
+    margin-top: -5%;
+
+  }
 .recipe__main > div {
     margin-left: 10px;
     display: flex;

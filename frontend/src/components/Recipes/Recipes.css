@@ -24,7 +24,7 @@
   cursor: pointer;
 }
 
-.recipes__detail > img {
+.recipes__image {
   height: 150px;
   width: 100%;
   object-fit: cover;

@@ -3,27 +3,26 @@ import { createContext, useContext, useState } from 'react';
 
 const AppContext = createContext();
 
-const categoryUrl = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=';
-const ingredientUrl = 'https://www.themealdb.com/api/json/v1/1/filter.php?i=';
-const searchUrl = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
-
 const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [recipes, setRecipes] = useState([]);
   const [loadedMeals, setLoadedMeals] = useState('');
   const [pantry, setPantry] = useState([]);
+  const [isLiked, setIsLiked] = useState(false)
 
   const executeScroll = () => {
-    loadedMeals.current.scrollIntoView();    
-  };
+    loadedMeals?.current.scrollIntoView();    
+  };  
 
   // Filter category recipes
-  const searchCategory = async (category) => {
+  const searchCategory = async (category) => {    
     setLoading(true);
+    setIsLiked(false)
+    executeScroll();
 
     try {
-      const response = await axios.get(`${categoryUrl}${category}`);
-      const data = await response.data;
+      const response = await axios.get(`/api/category/${category}`);
+      const data = await response.data;      
       const { meals } = data;
       setRecipes(meals);
       setLoading(false);
@@ -37,11 +36,13 @@ const AppProvider = ({ children }) => {
   };
 
   // Filter ingredient recipes
-  const searchIngredient = async (ingredient) => {
+  const searchIngredient = async (ingredient) => {    
     setLoading(true);
+    setIsLiked(false)
+    executeScroll();
 
     try {
-      const response = await axios.get(`${ingredientUrl}${ingredient}`);
+      const response = await axios.get(`/api/ingredient/${ingredient}`);
       const data = await response.data;
       const { meals } = data;
       setRecipes(meals);
@@ -56,11 +57,13 @@ const AppProvider = ({ children }) => {
   };
 
   // Search meals
-  const searchMeals = async (searchMeal) => {
+  const searchMeals = async (searchMeal) => {    
     setLoading(true);
+    setIsLiked(false)
+    executeScroll();
 
     try {
-      const response = await axios.get(`${searchUrl}${searchMeal}`);
+      const response = await axios.get(`/api/search/${searchMeal}`);
       const data = await response.data;
       const { meals } = data;
       setRecipes(meals);
@@ -74,6 +77,27 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  // Add Favorites
+  const addFavorites = async (identifier, name, image) => {    
+    try {
+      const response = await axios.post('/api/add-favorite/', {identifier, image, name})
+      const data = await response.data
+      console.log(data)      
+      return data      
+    } catch (error) {
+      console.log(error)      
+    }
+  }
+
+  const like = (index, identifier, name, image) => {
+    addFavorites(identifier, name, image)
+    setIsLiked(prevState => ({...isLiked, [index]: !prevState[index]}))   
+  }
+
+  const unlike = (index) => {
+    setIsLiked(prevState => ({...isLiked, [index]: !prevState[index]}))   
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -85,7 +109,10 @@ const AppProvider = ({ children }) => {
         setLoadedMeals,
         executeScroll,
         pantry,
-        setPantry,
+        setPantry,        
+        like,
+        unlike,
+        isLiked
       }}
     >
       {children}

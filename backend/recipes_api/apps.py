@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class QuickdishConfig(AppConfig):
+class RecipesApiConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'quickdish'
+    name = 'recipes_api'

@@ -72,7 +72,7 @@ const Meal = () => {
 
       setTimeout(() => {
         setLoading(false);
-      }, 2000);
+      }, 800);
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -85,7 +85,6 @@ const Meal = () => {
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + '....' : str;
   }
-
   const { name, image, instructions, area, ingredients } = meal;
 
   if (loading) {

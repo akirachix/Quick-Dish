@@ -1,14 +1,12 @@
 import axios from 'axios';
 import './Ingredients.css';
+import { Link } from 'react-router-dom';
 import { FaHeart } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 import { MdPlaylistAdd } from 'react-icons/md';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { useGlobalContext } from '../../context/context';
 import AddIngredients from '../AddIngredients/AddIngredients';
-
-const ingredientsUrl =
-  'https://www.themealdb.com/api/json/v1/1/list.php?i=list';
 
 const Ingredients = () => {
   const { searchIngredient } = useGlobalContext();
@@ -19,7 +17,7 @@ const Ingredients = () => {
   const fetchIngredients = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`${ingredientsUrl}`);
+      const response = await axios.get('/api/ingredients/');
       const data = await response.data;
       const { meals } = data;
       setIngredients(meals);
@@ -51,7 +49,11 @@ const Ingredients = () => {
               className="cursor-pointer"
               onClick={() => setOpen(true)}
             />
-            <FaHeart />
+
+            <Link to="/favorites">
+              <FaHeart />
+            </Link>
+
             <BsThreeDotsVertical />
           </div>
         </div>

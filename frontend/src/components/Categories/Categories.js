@@ -3,8 +3,6 @@ import axios from 'axios';
 import { useState, useEffect, useCallback } from 'react';
 import { useGlobalContext } from '../../context/context';
 
-const categoriesUrl = 'https://www.themealdb.com/api/json/v1/1/categories.php';
-
 const Categories = () => {
   const { searchCategory, pantry } = useGlobalContext();
   const [loading, setLoading] = useState(false);
@@ -13,7 +11,7 @@ const Categories = () => {
   const fetchCategories = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`${categoriesUrl}`);
+      const response = await axios.get('/api/categories/');
       const data = await response.data;
       setCategories(data.categories);
       setLoading(false);
@@ -51,7 +49,7 @@ const Categories = () => {
                   <img
                     className="img"
                     src="https://thumbs.dreamstime.com/b/heart-shape-various-vegetables-fruits-healthy-food-concept-isolated-white-background-140287808.jpg"
-                    alt="sabdio"
+                    alt="quickdish"
                   />
                 </div> */}
 

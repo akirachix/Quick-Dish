@@ -61,9 +61,12 @@ margin-top: 5%;
   margin-bottom: 20px;
 }
 
-.meal__right{
-  display: inline;
-  /* text-align: ; */
+.meal__right > button {
+  background-color: #A05656;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 10px 15px;
 }
 
 .icons{

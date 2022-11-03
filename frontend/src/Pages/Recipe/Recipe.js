@@ -5,6 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useGlobalContext } from '../../context/context';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { BsThreeDotsVertical } from 'react-icons/bs';
+import { MdKeyboardArrowLeft } from 'react-icons/md';
 const mealUrl = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
 const Recipe = () => {
   const { recipes } = useGlobalContext();
@@ -21,7 +22,7 @@ const Recipe = () => {
       setMeal(meals[0]);
       setTimeout(() => {
         setLoading(false);
-      }, 2000);
+      }, 800);
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -44,6 +45,20 @@ const Recipe = () => {
           <Link to={`/meal/${meal.idMeal}`}>
             <button className="recipe__button">Make meal</button>
           </Link>
+        </div>
+      </div>
+      <div className="recipe__start">
+        <div>
+          <Link
+            to={{
+              pathname: '/Home',
+            }}
+          >
+            <MdKeyboardArrowLeft />{' '}
+          </Link>
+        </div>
+        <div>
+          <h2>Recipe</h2>
         </div>
       </div>
       <div>
