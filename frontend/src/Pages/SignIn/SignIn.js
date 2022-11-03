@@ -27,7 +27,7 @@ const handleSubmit = async(e)=>{
           setEmail('')
           setPassword('')  
           setSuccess(true)
-          Navigate('/Home')
+          Navigate('/FullMeal')
   
   }
   return (
@@ -35,7 +35,7 @@ const handleSubmit = async(e)=>{
       {success ? (
         
           <section >
-                <Navigate exact to='/Home'>Login</Navigate>
+                <Navigate exact to='/FullMeal'>Login</Navigate>
           </section>
       ): (
         
@@ -82,7 +82,7 @@ const handleSubmit = async(e)=>{
         <p className="signin__member">
           Not a member yet?{' '}
           <span>
-          <a href="/" ><span>Sign up </span></a>
+          <a href="/SignUP" ><span>Sign up </span></a>
           </span>
         </p>
       </form>

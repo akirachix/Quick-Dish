@@ -2,7 +2,7 @@ import './SignUp.css';
 import { useRef, useState, useEffect } from "react"
 import axios from 'axios'
 import React from "react";
-// import {  Navigate} from "react-router-dom";
+import {  Navigate} from "react-router-dom";
 
 
 const SignUp = () => {
@@ -48,10 +48,10 @@ const handleSubmit = ()=>{
       const 
       {first_name,last_name,email,password} = user
       if (first_name && last_name && email && password){
-        axios.post("https://quick-dish",user )
+        axios.post("/api/auth/",user )
         .then(res=>{
           console.log(res)
-          // Navigate("/Login")
+          Navigate("/FullMeal")
       })
       .catch(error=>{
         console.log(error)
@@ -72,7 +72,7 @@ const handleSubmit = ()=>{
          {success ? (
           
             <section >
-                  {/* <Navigate exact to='/Login'>SignUp</Navigate> */}
+                  <Navigate exact to='/FullMeal'>SignUp</Navigate>
             </section>
         ): (
     <div className="signup">

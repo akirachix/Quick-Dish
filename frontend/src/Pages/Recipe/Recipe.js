@@ -1,3 +1,5 @@
+
+
 import './Recipe.css';
 import axios from 'axios';
 import { useState, useEffect, useCallback } from 'react';
@@ -6,18 +8,18 @@ import { useGlobalContext } from '../../context/context';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
-const mealUrl = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
+
 const Recipe = () => {
   const { recipes } = useGlobalContext();
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
   const [meal, setMeal] = useState({});
-  
+
   const fetchMeal = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`${mealUrl}${id}`);
-      const data = await response.data;
+      const response = await axios.get(`/api/meal/${id}`);
+      const data = await response.data;      
       const { meals } = data;
       setMeal(meals[0]);
       setTimeout(() => {
@@ -28,11 +30,11 @@ const Recipe = () => {
       setLoading(false);
     }
   }, [id]);
-  
+
   useEffect(() => {
     fetchMeal();
   }, [fetchMeal]);
-  
+
   if (loading) {
     return <h1>Loading...</h1>;
   }

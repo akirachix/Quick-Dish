@@ -13,6 +13,7 @@ const Ingredients = () => {
   const [loading, setLoading] = useState(false);
   const [ingredients, setIngredients] = useState([]);
   const [open, setOpen] = useState(false);
+  // const [select , setSelect]=useState(false)
 
   const fetchIngredients = async () => {
     setLoading(true);
@@ -27,6 +28,11 @@ const Ingredients = () => {
       setLoading(false);
     }
   };
+    
+// const selectIngredients =()=>{
+//   let Ingredients=[]
+//   Ingredients.push(ingredients)
+// }
 
   useEffect(() => {
     fetchIngredients();
