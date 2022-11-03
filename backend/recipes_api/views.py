@@ -1,6 +1,6 @@
 import requests
-from .models import Favorite
-from .serializers import UserSerializer, FavoriteSerializer
+from .models import Favorite, Pantry
+from .serializers import UserSerializer, FavoriteSerializer, PantrySerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
@@ -56,6 +56,12 @@ def fetch_meal(request, id):
     response = recipe.json()
     return Response(response)
 
+@api_view(['GET'])
+def fetch_meal(request, id):
+    recipe = requests.get("https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id)
+    response = recipe.json()
+    return Response(response)
+
 
 @api_view(['GET'])
 def fetch_favorites(request):
@@ -75,8 +81,7 @@ def add_favorite(request):
 
 @api_view(['GET', 'DELETE'])
 def remove_favorite(request, id):
-    favorite = Favorite.objects.get(pk=id)
-    print(favorite)
+    favorite = Favorite.objects.get(pk=id)    
 
     if request.method == 'GET':
         serializer = FavoriteSerializer(favorite)
@@ -85,3 +90,28 @@ def remove_favorite(request, id):
     if request.method == 'DELETE':
         favorite.delete()
         return Response('Unliked food!')
+
+
+@api_view(['GET'])
+def fetch_pantry(request):
+    pantry = Pantry.objects.all()
+    serializer = PantrySerializer(pantry, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['POST'])
+def add_pantry(request):
+    serializer = PantrySerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    else:
+        return Response(serializer.errors)        
+
+
+@api_view(['DELETE'])
+def remove_pantry(request, id):
+    pantry = Pantry.objects.get(pk=id)
+    pantry.delete()
+    return Response('Removed food from pantry!')
+    

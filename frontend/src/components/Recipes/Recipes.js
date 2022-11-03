@@ -14,15 +14,6 @@ const Recipes = () => {
     setLoadedMeals(recipesRef);
   }, [setLoadedMeals]);
 
-  // const handleLike = (index, identifier, name, image) => {    
-  //   addFavorites(identifier, name, image)    
-  //   setIsLiked(prevState => ({...isLiked, [index]: !prevState[index]}))    
-  // }
-
-  // const handleUnlike = (index, idMeal, strMeal, strMealThumb) => {
-  //   setIsLiked(prevState => ({...isLiked, [index]: !prevState[index]}))    
-  // }
-
   return (
     <div className="recipes">      
     {recipes?.length > 0 && <h2 className="recipes__title">Suggested Recipes</h2>}      

@@ -1,145 +1,88 @@
 import './SignUp.css';
-import { useRef, useState, useEffect } from "react"
-import axios from 'axios'
-import React from "react";
-import {  Navigate} from "react-router-dom";
-
+import axios from 'axios';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useGlobalContext } from '../../context/context';
 
 const SignUp = () => {
-  const userRef= useRef()
-  const errRef= useRef()
-  const [firstName] = useState('');
-    const [lastName] = useState('');
-    const [email] = useState('');
-    const [password] = useState('');
-    const [errMsg, setErrMsg] = useState('')
-    const [success, setSuccess] = useState(false)
-    
-    useEffect(()=>{
-      userRef.current.focus()
-  }, []
-  );
-  useEffect(()=>{
-    setErrMsg('');
-}, [ firstName, password]
-);
+  const navigate = useNavigate();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { recipeId } = useGlobalContext();
 
+  const signUp = async (e) => {
+    e.preventDefault();
 
-const [user,setUser] = useState({
-  first_name:"",
-  last_name:"",
-  email: "",
-  password:"",
-})
+    try {
+      const user = {
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        password,
+      };
 
-const handleChange = e =>{
-  const {name,value} = e.target
-  setUser({
-  ...user,//spread operator 
-  [name]:value
-
-  })
-  
-  }
-
-const handleSubmit = ()=>{
-      setSuccess(true) 
-
-      const 
-      {first_name,last_name,email,password} = user
-      if (first_name && last_name && email && password){
-        axios.post("/api/auth/",user )
-        .then(res=>{
-          console.log(res)
-          Navigate("/FullMeal")
-      })
-      .catch(error=>{
-        console.log(error)
-
-    })
+      if (firstName && lastName && email && password) {
+        const response = await axios.post('/api/auth/', user);
+        await response.data;
+        return navigate(`/meal/${recipeId}`);
+      }
+    } catch (error) {
+      console.log(error);
     }
-    else{
-      console.log(user)
-   alert("invalid input")
   };
 
-      
-  }
-
   return (
-
-    <> 
-         {success ? (
-          
-            <section >
-                  <Navigate exact to='/FullMeal'>SignUp</Navigate>
-            </section>
-        ): (
     <div className="signup">
-         <p ref={errRef} className={errMsg? "errmsg":"offscreen"} 
-          aria-live="assertive" >{errMsg}</p>
-
-      <form className="signup__form" onSubmit={handleSubmit} >
+      <form className="signup__form" onSubmit={signUp}>
         <h1>Sign Up</h1>
         <input
           className="signup__input"
-            type="text"
-            name='firstName'
-            onChange={handleChange}
-            id="firstName"
-            autoComplete="off"
-            ref={userRef}
-            required
-            placeholder=" enter first name"
-            ></input>
-      <input
+          type="text"
+          required
+          placeholder="Enter first name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+        <input
           className="signup__input"
           type="text"
-          name='lastName'
-          onChange={handleChange}
-          id="lastName"
-          ref={userRef}
-          autoComplete="off"
           required
-          placeholder=" enter last name"
-        ></input>
-        <input 
+          placeholder="Enter last name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
+        <input
           className="signup__input"
-          id="email" 
           type="email"
-          ref={userRef}
-          autoComplete="off"
-          onChange={handleChange}
-          name="email"
           required
-          placeholder=" enter email"
-    ></input>        
-
+          placeholder="Enter email address"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
         <input
           className="signup__input"
           type="password"
           required
-          ref={userRef}
-          name="password"
-          autoComplete="off"
-          onChange={handleChange}
           placeholder="Create password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button className="signup__button" type="submit">
+          Get Started
+        </button>
 
-        ></input> 
-        <button className="signup__button">Get Started</button>
-
-        <p className="signup__text">___________Or___________</p>
+        <p className="signup__text">or</p>
 
         <p className="signup__member">
           Already a QuickDish member?{' '}
           <span>
-          <a href="/SignIn" ><span>Sign in </span></a>
+            <Link to="/signin">Sign in</Link>
           </span>
         </p>
       </form>
     </div>
-        )}
-    </>
   );
 };
 

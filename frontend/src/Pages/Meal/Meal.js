@@ -1,13 +1,18 @@
 import './Meal.css';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { useState, useEffect, useCallback } from 'react';
+import { useGlobalContext } from '../../context/context';
+import { useParams, useNavigate } from 'react-router-dom';
+
 
 const Meal = () => {
   const { id } = useParams();
-  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const [meal, setMeal] = useState({});
+  const [loading, setLoading] = useState(false);
+  const { viewRecipe, setViewRecipe, setRecipeId, addFavorites } =
+    useGlobalContext();
 
   const fetchMeal = useCallback(async () => {
     setLoading(true);
@@ -18,6 +23,7 @@ const Meal = () => {
       const { meals } = data;
       if (meals) {
         const {
+          idMeal,
           strMeal: name,
           strMealThumb: image,
           strInstructions: instructions,
@@ -58,6 +64,7 @@ const Meal = () => {
         ];
 
         const meal = {
+          idMeal,
           name,
           image,
           instructions,
@@ -80,10 +87,18 @@ const Meal = () => {
   useEffect(() => {
     fetchMeal();
   }, [fetchMeal]);
+
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + '....' : str;
   }
-  const { name, image, instructions, area, ingredients } = meal;
+
+  const { idMeal, name, image, instructions, area, ingredients } = meal;
+
+  const handleViewRecipe = () => {
+    navigate('/signup');
+    setRecipeId(id);
+    setViewRecipe(true);
+  };
 
   if (loading) {
     return <h1>Loading...</h1>;
@@ -101,12 +116,15 @@ const Meal = () => {
           <p>
             {name} ({area})
           </p>
-          <div className="icons">
+
+          <div
+            className="meal__button"
+            onClick={() => {
+              addFavorites(idMeal, name, image);
+            }}
+          >
             <p>Save</p>
-            <div className="icon">
-              {' '}
-              <AiOutlineHeart />{' '}
-            </div>
+            <AiOutlineHeart />
           </div>
 
           <div className="meal__ingredients">
@@ -123,10 +141,17 @@ const Meal = () => {
 
         <div className="meal__right">
           <h1>Directions</h1>
-          <p>{truncate(instructions, 400)} </p>
-          <a href="/SignUp">
-            <span>View Full Recipe</span>
-          </a>
+          {viewRecipe ? (
+            <p>{instructions}</p>
+          ) : (
+            <p>{truncate(instructions, 300)} </p>
+          )}
+
+          {!viewRecipe && (
+            <button onClick={handleViewRecipe}>
+              <span>View Full Recipe</span>
+            </button>
+          )}
         </div>
       </div>
     </div>
