@@ -2,15 +2,17 @@ import './SignUp.css';
 import axios from 'axios';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useGlobalContext } from '../../context/context';
 
 const SignUp = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { recipeId } = useGlobalContext();
 
-  const signUp = async (e) => {    
+  const signUp = async (e) => {
     e.preventDefault();
 
     try {
@@ -23,8 +25,8 @@ const SignUp = () => {
 
       if (firstName && lastName && email && password) {
         const response = await axios.post('/api/auth/', user);
-        await response.data;        
-        return navigate('/');
+        await response.data;
+        return navigate(`/meal/${recipeId}`);
       }
     } catch (error) {
       console.log(error);

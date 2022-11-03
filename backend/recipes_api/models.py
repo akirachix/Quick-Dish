@@ -12,3 +12,7 @@ class Favorite(models.Model):
     identifier = models.IntegerField(unique=True)
     image = models.CharField(max_length=2048)
     name = models.CharField(max_length=300)
+
+class Pantry(models.Model):
+    name = models.CharField(max_length=30)
+    quantity = models.IntegerField() 

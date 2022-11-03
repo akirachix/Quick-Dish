@@ -36,6 +36,7 @@ const Recipe = () => {
   if (loading) {
     return <h1>Loading...</h1>;
   }
+  
   return (
     <div className="recipe">
       <div className="recipe__main">

@@ -4,9 +4,10 @@ import { useState, useEffect, useCallback } from 'react';
 import { useGlobalContext } from '../../context/context';
 
 const Categories = () => {
-  const { searchCategory, pantry } = useGlobalContext();
+  const { searchCategory } = useGlobalContext();
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [pantry, setPantry] = useState([]);
 
   const fetchCategories = useCallback(async () => {
     setLoading(true);
@@ -21,9 +22,21 @@ const Categories = () => {
     }
   }, []);
 
+  const fetchPantry = useCallback(async () => {
+    try {
+      const response = await axios.get('/api/pantry/')
+      const data = await response.data
+      setPantry(data)
+      console.log(data)
+    }catch (error) {
+      console.log(error)
+    }
+  }, [])
+
   useEffect(() => {
     fetchCategories();
-  }, [fetchCategories]);
+    fetchPantry()
+  }, [fetchCategories, fetchPantry]);
 
   const fetchRecipes = (category) => {
     searchCategory(category);
@@ -44,24 +57,18 @@ const Categories = () => {
         {pantry && pantry.length > 0 ? (
           <>
             {pantry.map((item, index) => (
-              <div key={index} className="home__info">
-                {/* <div>
-                  <img
-                    className="img"
-                    src="https://thumbs.dreamstime.com/b/heart-shape-various-vegetables-fruits-healthy-food-concept-isolated-white-background-140287808.jpg"
-                    alt="quickdish"
-                  />
-                </div> */}
-
+              item.quantity > 0 && (
+                <div key={index} className="home__info">              
                 <div className="aside__text">
-                  <h3 className="veg">{item.itemName}</h3>
+                  <h3 className="veg">{item.name}</h3>
                   <h5>You have {item.quantity} left</h5>
                 </div>
               </div>
+              )              
             ))}
           </>
         ) : (
-          <div>No ingredients found</div>
+          <div>Pantry is empty at the moment!</div>
         )}
       </div>
 
