@@ -39,6 +39,12 @@ const AddIngredients = ({ open, setOpen }) => {
     setInputValue('');
   };
 
+  // fetch('someurl/route',
+  // METHOD_NAME,
+  // bpdy
+  // ///)
+
+
   const handleQuantityIncrease = (index) => {
     const newItems = [...items];
 

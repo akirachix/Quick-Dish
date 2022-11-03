@@ -15,7 +15,7 @@ const Categories = () => {
     try {
       const response = await axios.get(`${categoriesUrl}`);
       const data = await response.data;
-      setCategories(data.categories);      
+      setCategories(data.categories);
       setLoading(false);
     } catch (error) {
       console.log(error);

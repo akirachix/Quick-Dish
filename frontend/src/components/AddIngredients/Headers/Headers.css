@@ -1,0 +1,45 @@
+.header {
+    width: 100%;
+    height: 200px;
+    padding: 30px;
+    background-color: #f9b639;
+    display: flex;
+    flex-direction: column;
+    /* gap: 10px; */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  
+  .header__logo {
+    width: 150px;
+    object-fit: contain;
+    margin-top: 1%;
+  }
+  
+  .header__search {
+    display: flex;
+    align-items: center;
+    border-radius: 25px;
+    padding: 10px;
+    background-color: white;
+    width: 50%;
+    margin-top: 30px;
+    justify-items: center;
+  }
+  
+  .header__icon {
+    color: gray;
+    font-size: 18px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .header__input {
+    outline: none;
+    border: none;
+    width: 100%;
+    background: transparent;
+  }
+  

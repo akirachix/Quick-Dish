@@ -158,7 +158,11 @@ const SignUp = () => {
           placeholder="Enter first name"
         />
         <input
-          className="signup__input"
+          class
+          
+          
+          
+          Name="signup__input"
           type="text"
           required
           placeholder="Enter last name"
