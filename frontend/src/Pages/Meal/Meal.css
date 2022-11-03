@@ -24,6 +24,21 @@
   margin-bottom: 20px;
 }
 
+.meal__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 5px;
+  width: 100px;
+  color: white;
+  background: #A05656;
+}
+
+.meal__button > p {
+  margin-right: 5px;
+}
+
 .meal__ingredients > h1 {
   font-weight: 700;
   font-size: 26px;  
@@ -69,33 +84,3 @@ margin-top: 5%;
     padding: 10px 15px;
 }
 
-.icons{
-  display: flex;
-  margin-left: 1%;
-  padding: 10px;
-  width: 25%;
-  color: white;
-  background-color: rgb(208, 82, 82);
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 3%;
-
-}
-.icon{
-  margin-left: 10px;
-  margin-top: 6px;
-  /* width: 66%; */
-  
-}
-.meal__right > a {
-  background-color: #A05656;
-    color: white;
-    font-size: 13px;
-    font-weight: bold;
-    padding: 20px;
-    /*Directions margin-top: 20px; */
-    /* margin-top: 20%; */
-}
-/* .span{
-  margin-top: 50%;
-} */

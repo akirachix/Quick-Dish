@@ -49,6 +49,7 @@ const Favorites = () => {
   return (
     <div className="favorites">
       <div className="favorites__header">
+        <h2>Favourite</h2>
         <form className="favorites__search" onSubmit={handleSubmit}>
           <AiOutlineSearch className="favorites__icon" />
           <input
