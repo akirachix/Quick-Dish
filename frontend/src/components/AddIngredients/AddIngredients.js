@@ -91,10 +91,7 @@ const AddIngredients = ({ open, setOpen }) => {
 
   };
 
-  // delet
-
   
-
   return (
     <Modal open={open}>
       <div className="app-background">
