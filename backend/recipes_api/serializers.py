@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Favorite
+from .models import User, Favorite, Pantry
 
 class UserSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
@@ -20,3 +20,12 @@ class FavoriteSerializer(serializers.Serializer):
 
     def create(self, data):
         return Favorite.objects.create(**data)
+
+class PantrySerializer(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
+    name = serializers.CharField(max_length=30)
+    quantity = serializers.IntegerField()     
+
+
+    def create(self, data):
+        return Pantry.objects.create(**data)

@@ -7,8 +7,8 @@
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-      url(https://unsplash.com/photos/oPBjWBCcAEo);
+     background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url('../../images/vegeterian.jpg');
   }
   
   .signin__form {
