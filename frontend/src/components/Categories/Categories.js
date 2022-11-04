@@ -56,7 +56,7 @@ const Categories = () => {
       <div className="home__bodyInformation1">
         {pantry && pantry.length > 0 ? (
           <>
-            {pantry.map((item, index) => (
+            {pantry.map((item, index) => ( 
               item.quantity > 0 && (
                 <div key={index} className="home__info">              
                 <div className="aside__text">

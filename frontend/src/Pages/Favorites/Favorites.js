@@ -3,6 +3,10 @@ import axios from 'axios';
 import { useRef, useState, useEffect } from 'react';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { AiOutlineSearch, AiFillHeart } from 'react-icons/ai';
+import { MdKeyboardArrowLeft } from 'react-icons/md';
+import { Link, useParams } from 'react-router-dom';
+
+
 
 const Favorites = () => {
   const inputRef = useRef(null);
@@ -49,6 +53,10 @@ const Favorites = () => {
   return (
     <div className="favorites">
       <div className="favorites__header">
+        <div className="fav">
+          <h2>Favourites</h2>
+        </div>
+
         <form className="favorites__search" onSubmit={handleSubmit}>
           <AiOutlineSearch className="favorites__icon" />
           <input
@@ -64,6 +72,20 @@ const Favorites = () => {
         </form>
       </div>
 
+       <div className="fav__start">
+        <div>
+          <Link
+            to={{
+              pathname: '/Meal',
+            }}
+          >
+            <MdKeyboardArrowLeft />{' '}
+          </Link>
+        </div>
+      
+      </div>
+      <div></div>
+
       <div className="sm:grid md:grid-cols-2 lg:grid-cols-5 mt-5">
         {favorites.length > 0 &&
           favorites.map((favorite) => {
@@ -75,7 +97,10 @@ const Favorites = () => {
                 <div className="favorites__name">
                   <h4>{name}</h4>
                   <div>
-                    <AiFillHeart style={{color: '#DE1A1A'}} onClick={() => removeFavorite(id)} />
+                    <AiFillHeart
+                      style={{ color: '#DE1A1A' }}
+                      onClick={() => removeFavorite(id)}
+                    />
                     <BsThreeDotsVertical />
                   </div>
                 </div>
@@ -84,7 +109,7 @@ const Favorites = () => {
           })}
       </div>
 
-      {favorites.length <= 0  && !loading && (
+      {favorites.length <= 0 && !loading && (
         <div>Click the heart button on recipes to add favorites</div>
       )}
     </div>

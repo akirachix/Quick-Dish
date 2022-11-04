@@ -81,14 +81,19 @@ const AddIngredients = ({ open, setOpen }) => {
 
     setItems(newItems);
   };
-
+  
   const toggleComplete = (index) => {
     const newItems = [...items];
 
     newItems[index].isSelected = !newItems[index].isSelected;
 
     setItems(newItems);
+
   };
+
+  // delet
+
+  
 
   return (
     <Modal open={open}>
