@@ -59,7 +59,7 @@ const AppProvider = ({ children }) => {
   // Search meals
   const searchMeals = async (searchMeal) => {    
     setLoading(true);
-    setIsLiked(false)
+    setIsLiked(false)                                                                                                                                                                                                                               
     executeScroll();
 
     try {

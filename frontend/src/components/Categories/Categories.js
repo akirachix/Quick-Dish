@@ -5,19 +5,19 @@ import { useGlobalContext } from '../../context/context';
 
 const Categories = () => {
   const { searchCategory, pantry } = useGlobalContext();
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
 
   const fetchCategories = useCallback(async () => {
-    setLoading(true);
+    // setLoading(true);
     try {
       const response = await axios.get('/api/categories/');
       const data = await response.data;
       setCategories(data.categories);      
-      setLoading(false);
+      // setLoading(false);
     } catch (error) {
       console.log(error);
-      setLoading(false);
+      // setLoading(false);
     }
   }, []);
 
@@ -29,9 +29,9 @@ const Categories = () => {
     searchCategory(category);
   };
 
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
+  // if (loading) {
+  //   return <h2>Loading...</h2>;
+  // }
 
   return (
     <div className="categories">
