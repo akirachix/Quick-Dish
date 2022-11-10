@@ -1,11 +1,13 @@
 import './Recipe.css';
 import axios from 'axios';
-import { useState, useEffect, useCallback } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { useGlobalContext } from '../../context/context';
+import logo from '../../images/logo.png';
 import { AiOutlineHeart } from 'react-icons/ai';
+import { Link, useParams } from 'react-router-dom';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
+import Loading from '../../components/Loading/Loading';
+import { useState, useEffect, useCallback } from 'react';
+import { useGlobalContext } from '../../context/context';
 
 const Recipe = () => {
   const { recipes } = useGlobalContext();
@@ -17,7 +19,7 @@ const Recipe = () => {
     setLoading(true);
     try {
       const response = await axios.get(`/api/meal/${id}`);
-      const data = await response.data;      
+      const data = await response.data;
       const { meals } = data;
       setMeal(meals[0]);
       setTimeout(() => {
@@ -34,11 +36,19 @@ const Recipe = () => {
   }, [fetchMeal]);
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return (
+      <div className="mt-16">
+        <Loading />
+      </div>
+    );
   }
-  
+
   return (
     <div className="recipe">
+      <div className="header">
+        <img className="header__logo" src={logo} alt="logo" />
+      </div>
+
       <div className="recipe__main">
         <img src={meal.strMealThumb} alt={meal.strMeal} />
         <div>

@@ -1,6 +1,8 @@
 import './Meal.css';
 import axios from 'axios';
+import logo from '../../images/logo.png';
 import { AiOutlineHeart } from 'react-icons/ai';
+import Loading from '../../components/Loading/Loading';
 import { useState, useEffect, useCallback } from 'react';
 import { useGlobalContext } from '../../context/context';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -100,7 +102,11 @@ const Meal = () => {
   };
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return (
+      <div className="mt-16">
+        <Loading />
+      </div>
+    );
   }
 
   if (!meal) {
@@ -109,6 +115,10 @@ const Meal = () => {
 
   return (
     <div className="meal">
+      <div className="header">
+        <img className="header__logo" src={logo} alt="logo" />
+      </div>
+
       <div className="meal__info">
         <div className="meal__left">
           <img src={image} alt={name} />

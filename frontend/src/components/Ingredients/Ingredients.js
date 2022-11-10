@@ -2,9 +2,10 @@ import axios from 'axios';
 import './Ingredients.css';
 import { Link } from 'react-router-dom';
 import { FaHeart } from 'react-icons/fa';
+import ReactTooltip from 'react-tooltip';
+import Loading from '../Loading/Loading';
 import { useState, useEffect } from 'react';
 import { MdPlaylistAdd } from 'react-icons/md';
-import { BsThreeDotsVertical } from 'react-icons/bs';
 import { useGlobalContext } from '../../context/context';
 import AddIngredients from '../AddIngredients/AddIngredients';
 
@@ -13,6 +14,10 @@ const Ingredients = () => {
   const [loading, setLoading] = useState(false);
   const [ingredients, setIngredients] = useState([]);
   const [open, setOpen] = useState(false);
+
+  const refreshPage = () => {
+    window.location.reload(false);
+  }
 
   const fetchIngredients = async () => {
     setLoading(true);
@@ -33,11 +38,16 @@ const Ingredients = () => {
   }, []);
 
   if (loading) {
-    return <h2>Loading...</h2>;
+    return (
+      <div className="mt-16">
+        <Loading />
+      </div>
+    );
   }
 
   return (
     <>
+      <ReactTooltip />
       <div className="ingredients">
         <div className="ingredients__header">
           <div className="ingredients__title">
@@ -46,15 +56,14 @@ const Ingredients = () => {
 
           <div className="ingredients__icons">
             <MdPlaylistAdd
-              className="cursor-pointer"
+              className="cursor-pointer"                          
               onClick={() => setOpen(true)}
+              data-tip='Add Pantry'
             />
 
-            <Link to="/favorites">
-              <FaHeart />
-            </Link>
-
-            <BsThreeDotsVertical />
+            <Link to="/favorites" data-tip='Favorites'>
+              <FaHeart />              
+            </Link>            
           </div>
         </div>
 
@@ -67,15 +76,18 @@ const Ingredients = () => {
                 className="ingredients__detail whitespace-nowrap"
                 key={idIngredient}
                 onClick={() => searchIngredient(strIngredient)}
+                data-tip={strIngredient}
               >
-                <p className="truncate">{strIngredient} </p>
+                <p className="truncate">
+                  {strIngredient}{' '}
+                </p>
               </div>
             );
           })}
         </div>
       </div>
 
-      <AddIngredients open={open} setOpen={setOpen} />
+      <AddIngredients open={open} setOpen={setOpen} refreshPage={refreshPage}/>
     </>
   );
 };

@@ -1,7 +1,7 @@
 import './Recipes.css';
 import { Link } from 'react-router-dom';
+import Loading from '../Loading/Loading';
 import { useRef, useEffect } from 'react';
-import { BsThreeDotsVertical } from 'react-icons/bs';
 import { useGlobalContext } from '../../context/context';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 
@@ -19,7 +19,7 @@ const Recipes = () => {
     {recipes?.length > 0 && <h2 className="recipes__title">Suggested Recipes</h2>}      
 
       {loading ? (
-        <h1>Loading...</h1>
+        <Loading/>
       ) : (                
         <div ref={recipesRef} className="sm:grid md:grid-cols-2 lg:grid-cols-3 mt-5">
           {recipes?.map((recipe, index) => {
@@ -37,8 +37,7 @@ const Recipes = () => {
                         <AiFillHeart style={{color: '#DE1A1A'}} onClick={() => unlike(index, idMeal, strMeal, strMealThumb)}/>
                       ) : (
                         <AiOutlineHeart onClick={() => like(index, idMeal, strMeal, strMealThumb )} />
-                      )}                      
-                      <BsThreeDotsVertical />
+                      )}                                            
                     </div>
                   </div>
                 </div>

@@ -14,5 +14,5 @@ class Favorite(models.Model):
     name = models.CharField(max_length=300)
 
 class Pantry(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=30, unique=True)
     quantity = models.IntegerField() 

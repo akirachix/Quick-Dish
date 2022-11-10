@@ -1,12 +1,11 @@
 import './Favorites.css';
 import axios from 'axios';
+import { Link, useParams } from 'react-router-dom';
 import { useRef, useState, useEffect } from 'react';
 import { BsThreeDotsVertical } from 'react-icons/bs';
-import { AiOutlineSearch, AiFillHeart } from 'react-icons/ai';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
-import { Link, useParams } from 'react-router-dom';
-
-
+import Loading from '../../components/Loading/Loading';
+import { AiOutlineSearch, AiFillHeart } from 'react-icons/ai';
 
 const Favorites = () => {
   const inputRef = useRef(null);
@@ -19,8 +18,7 @@ const Favorites = () => {
       const response = await axios.get('/api/favorites/');
       const data = await response.data;
       setLoading(false);
-      setFavorites(data);
-      // console.log(data)      
+      setFavorites(data);      
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -47,7 +45,11 @@ const Favorites = () => {
   };
 
   if (loading) {
-    return <h1>Loading..</h1>;
+    return (
+      <div className="mt-16">
+        <Loading />
+      </div>
+    );
   }
 
   return (
@@ -100,8 +102,7 @@ const Favorites = () => {
                     <AiFillHeart
                       style={{ color: '#DE1A1A' }}
                       onClick={() => removeFavorite(id)}
-                    />
-                    <BsThreeDotsVertical />
+                    />                    
                   </div>
                 </div>
               </div>

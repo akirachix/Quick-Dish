@@ -1,20 +1,50 @@
 import './Categories.css';
 import axios from 'axios';
+import Loading from '../Loading/Loading';
+import { MdDelete } from 'react-icons/md';
 import { useState, useEffect, useCallback } from 'react';
 import { useGlobalContext } from '../../context/context';
 
 const Categories = () => {
   const { searchCategory } = useGlobalContext();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
   const [pantry, setPantry] = useState([]);
+
+  const refreshPage = () => {
+    window.location.reload(false);
+  };
+
+  const fetchPantry = useCallback(async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get('/api/pantry/');
+      const data = await response.data;
+      setPantry(data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  const deletePantry = async (id) => {
+    setLoading(true);
+    try {
+      const response = await axios.delete(`/api/pantry/${id}`);
+      await response.data;
+      setLoading(false);
+      refreshPage();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const fetchCategories = useCallback(async () => {
     setLoading(true);
     try {
       const response = await axios.get('/api/categories/');
       const data = await response.data;
-      setCategories(data.categories);      
+      setCategories(data.categories);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -22,20 +52,9 @@ const Categories = () => {
     }
   }, []);
 
-  const fetchPantry = useCallback(async () => {
-    try {
-      const response = await axios.get('/api/pantry/')
-      const data = await response.data
-      setPantry(data)
-      console.log(data)
-    }catch (error) {
-      console.log(error)
-    }
-  }, [])
-
   useEffect(() => {
     fetchCategories();
-    fetchPantry()
+    fetchPantry();
   }, [fetchCategories, fetchPantry]);
 
   const fetchRecipes = (category) => {
@@ -43,7 +62,11 @@ const Categories = () => {
   };
 
   if (loading) {
-    return <h2>Loading...</h2>;
+    return (
+      <div className="mt-16">
+        <Loading />
+      </div>
+    );
   }
 
   return (
@@ -53,29 +76,35 @@ const Categories = () => {
         <p>Cook with what you have!</p>
       </div>
 
-      <div className="home__bodyInformation1">
-        {pantry && pantry.length > 0 ? (
-          <>
-            {pantry.map((item, index) => ( 
+      {pantry && pantry.length > 0 ? (
+        <div className="sm:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {pantry.map(
+            (item) =>
               item.quantity > 0 && (
-                <div key={index} className="home__info">              
-                <div className="aside__text">
-                  <h3 className="veg">{item.name}</h3>
-                  <h5>You have {item.quantity} left</h5>
-                </div>
-              </div>
-              )              
-            ))}
-          </>
-        ) : (
-          <div>Pantry is empty at the moment!</div>
-        )}
-      </div>
+                <div key={item.id} className="pantry__item">
+                  <div className="pantry__text">
+                    <h3>{item.name}</h3>
+                    <h5>You have {item.quantity} left</h5>
+                  </div>
 
-      {/* //category */}
+                  <div
+                    className="pantry__delete"
+                    onClick={() => deletePantry(item.id)}
+                  >
+                    <MdDelete fontSize={25} color="#920809" />
+                  </div>
+                </div>
+              )
+          )}
+        </div>
+      ) : (
+        <div>Pantry is empty at the moment!</div>
+      )}
+
       <div className="categories__title">
         <h2>Categories</h2>
       </div>
+
       <div className="sm:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-5">
         {categories.map((category) => {
           const { idCategory, strCategory, strCategoryThumb } = category;
