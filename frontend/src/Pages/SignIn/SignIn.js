@@ -19,6 +19,7 @@ const SignIn = () => {
           required
           placeholder="Create password"
         />
+
         <button className="signin__button">Get Started</button>
 
         <p className="signin__text">or</p>

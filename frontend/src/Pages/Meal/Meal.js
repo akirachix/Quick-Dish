@@ -96,7 +96,7 @@ const Meal = () => {
   const { idMeal, name, image, instructions, area, ingredients } = meal;
 
   const handleViewRecipe = () => {
-    navigate('/signup');
+    navigate('/meal/:id');
     setRecipeId(id);
     setViewRecipe(true);
   };
