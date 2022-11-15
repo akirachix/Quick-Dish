@@ -68,6 +68,8 @@ const handleSubmit = async(e)=>{
                       placeholder="password"
                      
         />
+
+        <button className="signin__button">Get Started</button>
          <div className='box'>
             <label>
                 <input type="checkbox" name="text" />

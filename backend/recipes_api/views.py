@@ -114,4 +114,5 @@ def remove_pantry(request, id):
     pantry = Pantry.objects.get(pk=id)
     pantry.delete()
     return Response('Removed food from pantry!')
-    
+
+ 
