@@ -123,7 +123,8 @@ const Meal = () => {
               addFavorites(idMeal, name, image);
             }}
           >
-            <p>Save</p>
+            <p>
+            <a href='/SignUp'>Save </a> </p>
             <AiOutlineHeart />
           </div>
 
