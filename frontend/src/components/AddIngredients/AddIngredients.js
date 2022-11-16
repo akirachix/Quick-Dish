@@ -2,7 +2,8 @@ import axios from 'axios';
 import './AddIngredients.css';
 import { Modal } from '@mui/material';
 import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
+import { useGlobalContext } from '../../context/context';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronRight,
@@ -12,42 +13,57 @@ import {
   faPlus,
 } from '@fortawesome/free-solid-svg-icons';
 
-const AddIngredients = ({ open, setOpen, refreshPage }) => {
-  const [items, setItems] = useState([]);
-  const [inputValue, setInputValue] = useState('');
+const AddIngredients = ({ open, setOpen }) => {
+  const { setPantry } = useGlobalContext();
+  const [inputValue, setInputValue] = useState('');  
+  const [pantryData, setPantryData] = useState([])
+  const [items, setItems] = useState(pantryData);
 
+  const fetchPantry = useCallback(async () => {
+    try {
+      const response = await axios.get('/api/pantry/')
+      const data = await response.data      
+      setPantryData(data)
+    }catch (error) {
+      console.log(error)
+    }
+  }, [])
+
+  useEffect(() => {
+    fetchPantry()
+  }, [fetchPantry])
+
+  // == add the list of items to our pantry state
   const handleDone = () => {
-    items.forEach(async (item) => {
+    setPantry([...items]);
+    setOpen(false);  
+    window.location.reload()  
+  };  
+
+  const handleAddButtonClick = async() => {
+    if (inputValue) {
+      const newItem = {
+        itemName: inputValue,
+        quantity: 1,
+        isSelected: false,
+      };
+
+      const newItems = [...items, newItem];
+      setItems(newItems);
+
       try {
-        const { itemName, quantity } = item;
-        const response = await axios.post('/api/add-pantry/', {
-          name: itemName,
-          quantity,
-        });
-        await response.data;
-        setOpen(false);
-        refreshPage();
-        setItems([]);
+        const item = {
+          name: newItem.itemName,
+          quantity: newItem.quantity
+        }
+        const response = await axios.post('api/add-pantry/', item)
+        const data = await response.data        
       } catch (error) {
-        console.log(error);
-        setOpen(false);
+        console.log(error)
       }
-      setItems([]);
-    });
-  };
 
-  const handleAddButtonClick = () => {
-    const newItem = {
-      itemName: inputValue,
-      quantity: 1,
-      isSelected: false,
-    };
-
-    const newItems = [...items, newItem];
-    setItems(newItems);
-
-    console.log(items);
-    setInputValue('');
+      setInputValue('');
+    }
   };
 
   const handleQuantityIncrease = (index) => {
@@ -79,9 +95,7 @@ const AddIngredients = ({ open, setOpen, refreshPage }) => {
       <div className="app-background">
         <div className="main-container">
           <h1 className="back">
-            {' '}
             <b>
-              {' '}
               <FontAwesomeIcon
                 icon={faChevronLeft}
                 onClick={() => {
@@ -89,10 +103,11 @@ const AddIngredients = ({ open, setOpen, refreshPage }) => {
                 }}
                 className="cursor-pointer"
               />
-            </b>{' '}
+            </b>
             Add Ingredients to your pantry <br />
-            <span>please add ingrdients from your fridge</span>{' '}
+            <span>please add ingrdients from your fridge</span>
           </h1>
+
           <div className="add-item-box">
             <input
               value={inputValue}
@@ -105,44 +120,49 @@ const AddIngredients = ({ open, setOpen, refreshPage }) => {
               onClick={() => handleAddButtonClick()}
             />
           </div>
+
           <div className="item-list">
-            {/* <h1>Added</h1> */}
-            {items.map((item, index) => (
-              <div className="item-container" key={index}>
-                <div
-                  className="item-name"
-                  onClick={() => toggleComplete(index)}
-                >
-                  {item.isSelected ? (
-                    <>
-                      <FontAwesomeIcon icon={faCheckCircle} />
-                      <span className="completed">{item.itemName}</span>
-                    </>
-                  ) : (
-                    <>
-                      <FontAwesomeIcon icon={faCircle} />
-                      <span>{item.itemName}</span>
-                    </>
-                  )}
-                </div>
-                <div className="quantity">
-                  <button>
-                    <FontAwesomeIcon
-                      icon={faChevronLeft}
-                      onClick={() => handleQuantityDecrease(index)}
-                    />
-                  </button>
-                  <span> {item.quantity} </span>
-                  <button>
-                    <FontAwesomeIcon
-                      icon={faChevronRight}
-                      onClick={() => handleQuantityIncrease(index)}
-                    />
-                  </button>
-                </div>
-              </div>
-            ))}
+            {items.map(
+              (item, index) =>
+                item.quantity > 0 && (
+                  <div className="item-container" key={index}>
+                    <h1>Added</h1>
+                    <div
+                      className="item-name"
+                      onClick={() => toggleComplete(index)}
+                    >
+                      {item.isSelected ? (
+                        <>
+                          <FontAwesomeIcon icon={faCheckCircle} />
+                          <span className="completed">{item.itemName}</span>
+                        </>
+                      ) : (
+                        <>
+                          <FontAwesomeIcon icon={faCircle} />
+                          <span>{item.itemName}</span>
+                        </>
+                      )}
+                    </div>
+                    <div className="quantity">
+                      <button>
+                        <FontAwesomeIcon
+                          icon={faChevronLeft}
+                          onClick={() => handleQuantityDecrease(index)}
+                        />
+                      </button>
+                      <span> {item.quantity} </span>
+                      <button>
+                        <FontAwesomeIcon
+                          icon={faChevronRight}
+                          onClick={() => handleQuantityIncrease(index)}
+                        />
+                      </button>
+                    </div>
+                  </div>
+                )
+            )}
           </div>
+
           <div className="btn" type="submit">
             <div>
               <Link to="/" onClick={handleDone}>
