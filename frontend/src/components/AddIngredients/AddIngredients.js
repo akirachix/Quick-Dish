@@ -20,10 +20,13 @@ const AddIngredients = ({ open, setOpen, refreshPage }) => {
     items.forEach(async (item) => {
       try {
         const { itemName, quantity } = item;
-        const response = await axios.post('/api/add-pantry/', {
-          name: itemName,
-          quantity,
-        });
+        const response = await axios.post(
+          'https://arcane-fortress-47060.herokuapp.com/api/add-pantry/',
+          {
+            name: itemName,
+            quantity,
+          }
+        );
         await response.data;
         setOpen(false);
         refreshPage();

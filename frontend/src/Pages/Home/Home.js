@@ -11,8 +11,13 @@ const Home = () => {
 
       <div className="home__container">
         <div className="home__categories">
-          <Categories />
-          <Recipes />
+          <div>
+            <Categories />
+          </div>
+
+          <div>
+            <Recipes />
+          </div>
         </div>
 
         <div className="home__ingredients">

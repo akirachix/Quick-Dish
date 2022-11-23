@@ -18,7 +18,9 @@ const Categories = () => {
   const fetchPantry = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await axios.get('/api/pantry/');
+      const response = await axios.get(
+        'https://arcane-fortress-47060.herokuapp.com/api/pantry/'
+      );
       const data = await response.data;
       setPantry(data);
       setLoading(false);
@@ -30,7 +32,9 @@ const Categories = () => {
   const deletePantry = async (id) => {
     setLoading(true);
     try {
-      const response = await axios.delete(`/api/pantry/${id}`);
+      const response = await axios.delete(
+        `https://arcane-fortress-47060.herokuapp.com/api/pantry/${id}`
+      );
       await response.data;
       setLoading(false);
       refreshPage();
@@ -42,8 +46,11 @@ const Categories = () => {
   const fetchCategories = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await axios.get('/api/categories/');
+      const response = await axios.get(
+        'https://arcane-fortress-47060.herokuapp.com/api/categories/'
+      );
       const data = await response.data;
+      console.log(data);
       setCategories(data.categories);
       setLoading(false);
     } catch (error) {

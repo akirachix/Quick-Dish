@@ -1,6 +1,7 @@
 .home {
   height: 100%;
   width: 100%;
+  /* margin-top: 40px; */
 }
 
 .home__container {
@@ -10,9 +11,31 @@
 .home__categories {
   flex: 0.7;
   height: calc(100vh - 200px);
-  overflow-y: scroll;  
+  overflow-y: scroll;
 }
 
 .home__ingredients {
-  flex: 0.3;
+  flex: 0.3;    
+}
+
+@media screen and (max-width: 480px) {
+  .home__container {
+    display: flex;
+    flex-direction: column;
+  }
+  .home__ingredients {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    flex:0.5;
+  }
+  .home {
+    display: flex;
+    margin-top: 160px;
+    flex-direction: column;
+  }
+  .home__categories{
+    display: flex;
+    flex-direction: column;
+  }
 }

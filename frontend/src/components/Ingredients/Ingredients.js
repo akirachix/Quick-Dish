@@ -4,16 +4,17 @@ import { Link } from 'react-router-dom';
 import { FaHeart } from 'react-icons/fa';
 import ReactTooltip from 'react-tooltip';
 import Loading from '../Loading/Loading';
-import { useState, useEffect } from 'react';
 import { MdPlaylistAdd } from 'react-icons/md';
+import { useState, useEffect, useRef } from 'react';
 import { useGlobalContext } from '../../context/context';
 import AddIngredients from '../AddIngredients/AddIngredients';
 
 const Ingredients = () => {
-  const { searchIngredient } = useGlobalContext();
+  const { searchIngredients } = useGlobalContext();
   const [loading, setLoading] = useState(false);
   const [ingredients, setIngredients] = useState([]);
   const [open, setOpen] = useState(false);
+  const ingredientRef = useRef(null);
 
   const refreshPage = () => {
     window.location.reload(false);
@@ -22,8 +23,10 @@ const Ingredients = () => {
   const fetchIngredients = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('/api/ingredients/');
-      const data = await response.data;
+      const response = await axios.get(
+        'https://arcane-fortress-47060.herokuapp.com/api/ingredients/'
+      );
+      const data = await response.data;      
       const { meals } = data;
       setIngredients(meals);
       setLoading(false);
@@ -37,6 +40,37 @@ const Ingredients = () => {
     fetchIngredients();
   }, []);
 
+  let ingredientsArray = [];
+
+  const selectMutipleIngredients = (ingredient) => {
+
+    if (!ingredientsArray.includes(ingredient)) {      
+      ingredientsArray.push(ingredient);
+      console.log(ingredientsArray)
+    }else {
+      let removeIngredient = ingredientsArray.indexOf(ingredient)
+      ingredientsArray = ingredientsArray.filter((item) => item !== ingredientsArray[removeIngredient])
+      console.log(ingredientsArray)
+    }
+  }
+
+  const Ingredient = ({ingredient}) => {
+    const [isActive, setIsActive] = useState(false);
+    return (
+      <div
+                ref={ingredientRef}
+                className={`ingredients__detail ${isActive ? 'selected' : ''}`}                
+                data-tip={ingredient}
+                onClick={() => {selectMutipleIngredients(ingredient) 
+                  setIsActive(!isActive)}}
+              >                
+                <p className="truncate">
+                  {ingredient}
+                </p>
+              </div>
+    )
+  }
+
   if (loading) {
     return (
       <div className="mt-16">
@@ -49,39 +83,36 @@ const Ingredients = () => {
     <>
       <ReactTooltip />
       <div className="ingredients">
-        <div className="ingredients__header">
-          <div className="ingredients__title">
-            <p>Select Ingredients</p>
+        <div className='fixed w-[28%] top-[200px] px-3 pt-[10px] bg-white pb-10'>
+          <div className="ingredients__header">
+            <div className="ingredients__title">
+              <p>Select Ingredients</p>
+            </div>
+
+            <div className="ingredients__icons">
+              <MdPlaylistAdd
+                className="cursor-pointer"                          
+                onClick={() => setOpen(true)}
+                data-tip='Add Pantry'
+              />
+
+              <Link to="/favorites" data-tip='Favorites'>
+                <FaHeart />              
+              </Link>            
+            </div>
           </div>
 
-          <div className="ingredients__icons">
-            <MdPlaylistAdd
-              className="cursor-pointer"                          
-              onClick={() => setOpen(true)}
-              data-tip='Add Pantry'
-            />
-
-            <Link to="/favorites" data-tip='Favorites'>
-              <FaHeart />              
-            </Link>            
+          <div className="ingredients__button">
+            <button onClick={() => searchIngredients(ingredientsArray.toString())}>Get recipe</button>
           </div>
         </div>
 
-        <div className="sm:grid lg:grid-cols-2 xl:grid-cols-3 mt-5">
+        <div className="sm:grid lg:grid-cols-2 xl:grid-cols-3 mt-32">
           {ingredients.map((ingredient) => {
             const { idIngredient, strIngredient } = ingredient;
 
             return (
-              <div
-                className="ingredients__detail whitespace-nowrap"
-                key={idIngredient}
-                onClick={() => searchIngredient(strIngredient)}
-                data-tip={strIngredient}
-              >
-                <p className="truncate">
-                  {strIngredient}{' '}
-                </p>
-              </div>
+              <Ingredient key={idIngredient} ingredient={strIngredient} />
             );
           })}
         </div>

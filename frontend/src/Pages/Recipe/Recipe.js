@@ -18,7 +18,7 @@ const Recipe = () => {
   const fetchMeal = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`/api/meal/${id}`);
+      const response = await axios.get(`https://arcane-fortress-47060.herokuapp.com//api/meal/${id}`);
       const data = await response.data;
       const { meals } = data;
       setMeal(meals[0]);
@@ -69,7 +69,7 @@ const Recipe = () => {
           </Link>
         </div>
         <div>
-          <h2>Recipe</h2>
+          <h2>Back</h2>
         </div>
       </div>
       <div>

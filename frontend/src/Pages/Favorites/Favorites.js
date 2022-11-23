@@ -15,7 +15,9 @@ const Favorites = () => {
   const fetchFavorites = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('/api/favorites/');
+      const response = await axios.get(
+        'https://arcane-fortress-47060.herokuapp.com/api/favorites/'
+      );
       const data = await response.data;
       setLoading(false);
       setFavorites(data);      
@@ -27,7 +29,9 @@ const Favorites = () => {
 
   const removeFavorite = async (id) => {    
     try {
-      const response = await axios.delete(`/api/remove-favorite/${id}`)
+      const response = await axios.delete(
+        `https://arcane-fortress-47060.herokuapp.com/api/remove-favorite/${id}`
+      );
       const data = await response.data
       console.log(data)    
       fetchFavorites()

@@ -36,11 +36,13 @@ def category_recipe(request, meal):
     response = recipe.json()
     return Response(response)
 
+
 @api_view(['GET'])
 def ingredient_recipe(request, meal):
-    recipe = requests.get("https://www.themealdb.com/api/json/v1/1/filter.php?i=" + meal)
+    recipe = requests.get("https://www.themealdb.com/api/json/v2/9973533/filter.php?i=" + meal)
     response = recipe.json()
-    return Response(response)    
+    return Response(response)  
+      
 
 
 @api_view(['GET'])
@@ -55,6 +57,7 @@ def fetch_meal(request, id):
     recipe = requests.get("https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id)
     response = recipe.json()
     return Response(response)
+
 
 @api_view(['GET'])
 def fetch_favorites(request):
@@ -71,6 +74,7 @@ def add_favorite(request):
         return Response(serializer.data)
     else:
         return Response(serializer.errors)
+
 
 @api_view(['GET', 'DELETE'])
 def remove_favorite(request, id):
