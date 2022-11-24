@@ -86,3 +86,9 @@
 .categories__detail:hover > p {
   color: #a05656;
 }
+
+@media screen and (max-width: 950px) {
+  .categories__detail {
+    margin-bottom: 20px;
+  }
+}

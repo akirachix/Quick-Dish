@@ -17,18 +17,20 @@ const Recipe = () => {
 
   const fetchMeal = useCallback(async () => {
     setLoading(true);
-    try {
-      const response = await axios.get(`https://arcane-fortress-47060.herokuapp.com//api/meal/${id}`);
-      const data = await response.data;
-      const { meals } = data;
-      setMeal(meals[0]);
-      setTimeout(() => {
-        setLoading(false);
-      }, 800);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
+   try {
+     const response = await axios.get(
+       `https://arcane-fortress-47060.herokuapp.com/api/meal/${id}`
+     );
+     const data = await response.data;
+     const { meals } = data;
+     setMeal(meals[0]);
+     setTimeout(() => {
+       setLoading(false);
+     }, 800);
+   } catch (error) {
+     console.log(error);
+     setLoading(false);
+   }
   }, [id]);
 
   useEffect(() => {
@@ -45,8 +47,8 @@ const Recipe = () => {
 
   return (
     <div className="recipe">
-      <div className="header">
-        <img className="header__logo" src={logo} alt="logo" />
+      <div className="recipe__header">
+        <img className="recipe__logo" src={logo} alt="logo" />
       </div>
 
       <div className="recipe__main">
@@ -58,34 +60,26 @@ const Recipe = () => {
           </Link>
         </div>
       </div>
-      <div className="recipe__start">
-        <div>
-          <Link
-            to={{
-              pathname: '/Home',
-            }}
-          >
-            <MdKeyboardArrowLeft />{' '}
-          </Link>
-        </div>
-        <div>
-          <h2>Back</h2>
-        </div>
-      </div>
-      <div>
-        <h2 className="recipes__title mt-5 ml">You might also like</h2>
+    
+        <h2 className="font-semibold mt-5 ml-5 text-xl">You might also like</h2>
+
         {loading ? (
           <h1>Loading...</h1>
         ) : (
-          <div className="sm:grid md:grid-cols-2 lg:grid-cols-5 mt-5">
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 mt-5">
             {recipes?.map((recipe) => {
               const { idMeal, strMeal, strMealThumb } = recipe;
               return (
+                <div className='m-5' key={idMeal}>
                 <Link key={idMeal} to={`/${idMeal}`}>
-                  <div className="recipes__detail" key={idMeal}>
-                    <img src={strMealThumb} alt={strMeal} />
-                    <div className="recipes__name">
-                      <h4>{strMeal}</h4>
+                  <div className="recipe__detail" key={idMeal}>
+                    <img
+                      className="recipe__image"
+                      src={strMealThumb}
+                      alt={strMeal}
+                    />
+                    <div className="recipe__name">
+                      <h4 className="truncate">{strMeal}</h4>
                       <div>
                         <AiOutlineHeart />
                         <BsThreeDotsVertical />
@@ -93,11 +87,11 @@ const Recipe = () => {
                     </div>
                   </div>
                 </Link>
+                </div>
               );
             })}
           </div>
-        )}
-      </div>
+        )}      
     </div>
   );
 };

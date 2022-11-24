@@ -1,10 +1,10 @@
-.ingredients {  
+.ingredients {
   padding: 10px;
   height: calc(100vh - 200px);
   overflow-y: scroll;
 }
 
-.ingredients__header {  
+.ingredients__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -22,7 +22,7 @@
   width: 20%;
 }
 
-.ingredients__button {  
+.ingredients__button {
   margin-top: 20px;
   display: flex;
   justify-content: center;
@@ -36,7 +36,7 @@
   background: #920809;
 }
 
-.ingredients__detail {    
+.ingredients__detail {
   margin: 15px;
   padding: 15px;
   background: #e3e3e3;
@@ -53,8 +53,14 @@
 .ingredients__detail:hover {
   background: #920809;
   color: white;
-} 
-.selected{
-  background-color:#920809;
+}
+.selected {
+  background-color: #920809;
   color: white;
+}
+
+@media screen and (max-width: 950px) {
+  .ingredients__button > button {
+    width: 100%;
+  }
 }

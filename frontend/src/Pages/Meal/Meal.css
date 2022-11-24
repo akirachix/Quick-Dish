@@ -1,7 +1,6 @@
 .meal {
-  /* padding: 10px; */
-   height: 100%;
-   width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 .meal__info {
@@ -34,7 +33,7 @@
   border-radius: 5px;
   width: 100px;
   color: white;
-  background: #A05656;
+  background: #a05656;
 }
 
 .meal__button > p {
@@ -43,16 +42,15 @@
 
 .meal__ingredients > h1 {
   font-weight: 700;
-  font-size: 26px;  
+  font-size: 26px;
   margin-top: 15px;
-
 }
 
 .meal__ingredient {
-list-style: none;
-text-align: left;
-margin-left: 20px;
-margin-top: 5%;
+  list-style: none;
+  text-align: left;
+  margin-left: 20px;
+  margin-top: 5%;
 }
 
 .meal__ingredient::before {
@@ -79,9 +77,31 @@ margin-top: 5%;
 }
 
 .meal__right > button {
-  background-color: #A05656;
-    color: white;
-    font-size: 13px;
-    font-weight: bold;
-    padding: 10px 15px;
+  background-color: #a05656;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 10px 15px;
+}
+
+@media screen and (max-width: 970px) {
+  .meal__left {
+    flex: 0.4;
+  }
+
+  .meal__right {
+    flex: 0.6;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .meal__info {
+    flex-direction: column;
+  }
+
+  .meal__left {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
 }

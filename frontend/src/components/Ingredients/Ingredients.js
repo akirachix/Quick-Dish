@@ -18,7 +18,7 @@ const Ingredients = () => {
 
   const refreshPage = () => {
     window.location.reload(false);
-  }
+  };
 
   const fetchIngredients = async () => {
     setLoading(true);
@@ -26,7 +26,7 @@ const Ingredients = () => {
       const response = await axios.get(
         'https://arcane-fortress-47060.herokuapp.com/api/ingredients/'
       );
-      const data = await response.data;      
+      const data = await response.data;
       const { meals } = data;
       setIngredients(meals);
       setLoading(false);
@@ -43,33 +43,34 @@ const Ingredients = () => {
   let ingredientsArray = [];
 
   const selectMutipleIngredients = (ingredient) => {
-
-    if (!ingredientsArray.includes(ingredient)) {      
+    if (!ingredientsArray.includes(ingredient)) {
       ingredientsArray.push(ingredient);
-      console.log(ingredientsArray)
-    }else {
-      let removeIngredient = ingredientsArray.indexOf(ingredient)
-      ingredientsArray = ingredientsArray.filter((item) => item !== ingredientsArray[removeIngredient])
-      console.log(ingredientsArray)
+      console.log(ingredientsArray);
+    } else {
+      let removeIngredient = ingredientsArray.indexOf(ingredient);
+      ingredientsArray = ingredientsArray.filter(
+        (item) => item !== ingredientsArray[removeIngredient]
+      );
+      console.log(ingredientsArray);
     }
-  }
+  };
 
-  const Ingredient = ({ingredient}) => {
+  const Ingredient = ({ ingredient }) => {
     const [isActive, setIsActive] = useState(false);
     return (
       <div
-                ref={ingredientRef}
-                className={`ingredients__detail ${isActive ? 'selected' : ''}`}                
-                data-tip={ingredient}
-                onClick={() => {selectMutipleIngredients(ingredient) 
-                  setIsActive(!isActive)}}
-              >                
-                <p className="truncate">
-                  {ingredient}
-                </p>
-              </div>
-    )
-  }
+        ref={ingredientRef}
+        className={`ingredients__detail ${isActive ? 'selected' : ''}`}
+        data-tip={ingredient}
+        onClick={() => {
+          selectMutipleIngredients(ingredient);
+          setIsActive(!isActive);
+        }}
+      >
+        <p className="truncate">{ingredient}</p>
+      </div>
+    );
+  };
 
   if (loading) {
     return (
@@ -83,42 +84,44 @@ const Ingredients = () => {
     <>
       <ReactTooltip />
       <div className="ingredients">
-        <div className='fixed w-[28%] top-[200px] px-3 pt-[10px] bg-white pb-10'>
-          <div className="ingredients__header">
-            <div className="ingredients__title">
-              <p>Select Ingredients</p>
-            </div>
-
-            <div className="ingredients__icons">
-              <MdPlaylistAdd
-                className="cursor-pointer"                          
-                onClick={() => setOpen(true)}
-                data-tip='Add Pantry'
-              />
-
-              <Link to="/favorites" data-tip='Favorites'>
-                <FaHeart />              
-              </Link>            
-            </div>
+        {/* <div className='fixed w-[28%] top-[200px] px-3 pt-[10px] bg-white pb-10'> */}
+        <div className="ingredients__header">
+          <div className="ingredients__title">
+            <p>Select Ingredients</p>
           </div>
 
-          <div className="ingredients__button">
-            <button onClick={() => searchIngredients(ingredientsArray.toString())}>Get recipe</button>
+          <div className="ingredients__icons">
+            <MdPlaylistAdd
+              className="cursor-pointer"
+              onClick={() => setOpen(true)}
+              data-tip="Add Pantry"
+            />
+
+            <Link to="/favorites" data-tip="Favorites">
+              <FaHeart />
+            </Link>
           </div>
         </div>
 
-        <div className="sm:grid lg:grid-cols-2 xl:grid-cols-3 mt-32">
+        <div className="ingredients__button">
+          <button
+            onClick={() => searchIngredients(ingredientsArray.toString())}
+          >
+            Get recipe
+          </button>
+        </div>
+        {/* </div> */}
+
+        <div className="sm:grid md:grid-cols-2 xl:grid-cols-3 mt-10">
           {ingredients.map((ingredient) => {
             const { idIngredient, strIngredient } = ingredient;
 
-            return (
-              <Ingredient key={idIngredient} ingredient={strIngredient} />
-            );
+            return <Ingredient key={idIngredient} ingredient={strIngredient} />;
           })}
         </div>
       </div>
 
-      <AddIngredients open={open} setOpen={setOpen} refreshPage={refreshPage}/>
+      <AddIngredients open={open} setOpen={setOpen} refreshPage={refreshPage} />
     </>
   );
 };

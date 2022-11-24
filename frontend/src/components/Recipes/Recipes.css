@@ -60,3 +60,10 @@
   color: #ee573e;
   font-weight: 700;
 }
+
+
+@media screen and (max_width: 950px) {
+  .recipes__detail {
+    margin-bottom: 20px;
+  }
+}

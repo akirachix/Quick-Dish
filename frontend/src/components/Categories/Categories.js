@@ -33,7 +33,8 @@ const Categories = () => {
     setLoading(true);
     try {
       const response = await axios.delete(
-        `https://arcane-fortress-47060.herokuapp.com/api/pantry/${id}`
+        // `https://arcane-fortress-47060.herokuapp.com/api/pantry/${id}`
+        `/api/pantry/${id}`
       );
       await response.data;
       setLoading(false);
@@ -47,10 +48,10 @@ const Categories = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        'https://arcane-fortress-47060.herokuapp.com/api/categories/'
+        // 'https://arcane-fortress-47060.herokuapp.com/api/categories/'
+        '/api/categories/'
       );
-      const data = await response.data;
-      console.log(data);
+      const data = await response.data;      
       setCategories(data.categories);
       setLoading(false);
     } catch (error) {

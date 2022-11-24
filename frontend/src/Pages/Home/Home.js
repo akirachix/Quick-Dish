@@ -15,13 +15,17 @@ const Home = () => {
             <Categories />
           </div>
 
-          <div>
+          <div className='home__recipes'>
             <Recipes />
           </div>
         </div>
 
         <div className="home__ingredients">
           <Ingredients />
+        </div>
+
+        <div className='home__recipes-mobile'>
+          <Recipes/>
         </div>
       </div>
     </div>

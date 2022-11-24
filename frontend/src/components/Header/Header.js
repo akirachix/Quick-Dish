@@ -34,6 +34,10 @@ const Header = () => {
         <button className="header__button" type="submit">
           Search
         </button>
+
+        <button className='header__button-mobile'>
+          <AiOutlineSearch className="header__icon-mobile" />
+        </button>
       </form>
     </div>
   );
