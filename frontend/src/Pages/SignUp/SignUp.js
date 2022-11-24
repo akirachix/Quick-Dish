@@ -24,7 +24,10 @@ const SignUp = () => {
       };
 
       if (firstName && lastName && email && password) {
-        const response = await axios.post('/api/auth/', user);
+        const response = await axios.post(
+          'https://arcane-fortress-47060.herokuapp.com/api/auth/',
+          user
+        );
         await response.data;
         return navigate(`/meal/${recipeId}`);
       }

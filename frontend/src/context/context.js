@@ -15,7 +15,7 @@ const AppProvider = ({ children }) => {
   // console.log(pantry)
 
   const executeScroll = () => {
-    loadedMeals?.current.scrollIntoView();
+    loadedMeals?.current?.scrollIntoView();  
   };
 
   // Filter category recipes
@@ -25,7 +25,9 @@ const AppProvider = ({ children }) => {
     executeScroll();
 
     try {
-      const response = await axios.get(`/api/category/${category}`);
+      const response = await axios.get(
+        `https://arcane-fortress-47060.herokuapp.com/api/category/${category}`
+      );
       const data = await response.data;
       const { meals } = data;
       setRecipes(meals);
@@ -40,13 +42,15 @@ const AppProvider = ({ children }) => {
   };
 
   // Filter ingredient recipes
-  const searchIngredient = async (ingredient) => {
+  const searchIngredients = async (ingredients) => {
     setLoading(true);
     setIsLiked(false);
     executeScroll();
 
     try {
-      const response = await axios.get(`/api/ingredient/${ingredient}`);
+      const response = await axios.get(
+        `https://arcane-fortress-47060.herokuapp.com/api/ingredient/${ingredients}`
+      );
       const data = await response.data;
       const { meals } = data;
       setRecipes(meals);
@@ -67,7 +71,9 @@ const AppProvider = ({ children }) => {
     executeScroll();
 
     try {
-      const response = await axios.get(`/api/search/${searchMeal}`);
+      const response = await axios.get(
+        `https://arcane-fortress-47060.herokuapp.com/api/search/${searchMeal}`
+      );
       const data = await response.data;
       const { meals } = data;
       setRecipes(meals);
@@ -84,11 +90,14 @@ const AppProvider = ({ children }) => {
   // Add Favorites
   const addFavorites = async (identifier, name, image) => {
     try {
-      const response = await axios.post('/api/add-favorite/', {
-        identifier,
-        image,
-        name,
-      });
+      const response = await axios.post(
+        'https://arcane-fortress-47060.herokuapp.com/api/add-favorite/',
+        {
+          identifier,
+          image,
+          name,
+        }
+      );
       const data = await response.data;
       console.log(data);
       return data;
@@ -110,7 +119,7 @@ const AppProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         searchCategory,
-        searchIngredient,
+        searchIngredients,
         searchMeals,
         loading,
         recipes,

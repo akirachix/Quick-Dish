@@ -52,6 +52,18 @@ const AddIngredients = ({ open, setOpen }) => {
       setItems(newItems);
 
       try {
+        const { itemName, quantity } = item;
+        const response = await axios.post(
+          'https://arcane-fortress-47060.herokuapp.com/api/add-pantry/',
+          {
+            name: itemName,
+            quantity,
+          }
+        );
+        await response.data;
+        setOpen(false);
+        refreshPage();
+        setItems([]);
         const item = {
           name: newItem.itemName,
           quantity: newItem.quantity
