@@ -10,10 +10,12 @@ const AppProvider = ({ children }) => {
   const [pantry, setPantry] = useState([]);
   const [isLiked, setIsLiked] = useState(false);
   const [recipeId, setRecipeId] = useState('');
-  const [viewRecipe, setViewRecipe] = useState(false);  
+  const [viewRecipe, setViewRecipe] = useState(false);
+
+  // console.log(pantry)
 
   const executeScroll = () => {
-    loadedMeals?.current?.scrollIntoView();  
+    loadedMeals?.current.scrollIntoView();
   };
 
   // Filter category recipes
@@ -24,8 +26,8 @@ const AppProvider = ({ children }) => {
 
     try {
       const response = await axios.get(
-        // `https://arcane-fortress-47060.herokuapp.com/api/category/${category}`
-        `/api/category/${category}`
+        `https://arcane-fortress-47060.herokuapp.com/api/category/${category}`
+        // `/api/category/${category}`
       );
       const data = await response.data;
       const { meals } = data;
@@ -41,15 +43,15 @@ const AppProvider = ({ children }) => {
   };
 
   // Filter ingredient recipes
-  const searchIngredients = async (ingredients) => {
+  const searchIngredients = async (Ingredients) => {
     setLoading(true);
     setIsLiked(false);
     executeScroll();
 
     try {
       const response = await axios.get(
-        // `https://arcane-fortress-47060.herokuapp.com/api/ingredient/${ingredients}`
-        `/api/ingredient/${ingredients}`
+        `https://arcane-fortress-47060.herokuapp.com/api/ingredient/${Ingredients}`
+        // `/api/ingredient/${ingredients}`
       );
       const data = await response.data;
       const { meals } = data;
@@ -72,8 +74,8 @@ const AppProvider = ({ children }) => {
 
     try {
       const response = await axios.get(
-        // `https://arcane-fortress-47060.herokuapp.com/api/search/${searchMeal}`
-        `/api/search/${searchMeal}`
+        `https://arcane-fortress-47060.herokuapp.com/api/search/${searchMeal}`
+        // `/api/search/${searchMeal}`
       );
       const data = await response.data;
       const { meals } = data;
@@ -92,9 +94,8 @@ const AppProvider = ({ children }) => {
   const addFavorites = async (identifier, name, image) => {
     try {
       const response = await axios.post(
-        // 'https://arcane-fortress-47060.herokuapp.com/api/add-favorite/'
-        '/api/add-favorite'
-        ,
+        'https://arcane-fortress-47060.herokuapp.com/api/add-favorite/',
+        // '/api/add-favorite',
         {
           identifier,
           image,

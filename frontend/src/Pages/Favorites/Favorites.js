@@ -1,11 +1,10 @@
 import './Favorites.css';
 import axios from 'axios';
-import { Link, useParams } from 'react-router-dom';
 import { useRef, useState, useEffect } from 'react';
 import { BsThreeDotsVertical } from 'react-icons/bs';
-import { MdKeyboardArrowLeft } from 'react-icons/md';
-import Loading from '../../components/Loading/Loading';
 import { AiOutlineSearch, AiFillHeart } from 'react-icons/ai';
+import { MdKeyboardArrowLeft } from 'react-icons/md';
+import { Link, useParams } from 'react-router-dom';
 
 const Favorites = () => {
   const inputRef = useRef(null);
@@ -15,12 +14,11 @@ const Favorites = () => {
   const fetchFavorites = async () => {
     setLoading(true);
     try {
-      const response = await axios.delete(
-        `https://arcane-fortress-47060.herokuapp.com/api/remove-favorite/`
-      );
+      const response = await axios.get('/api/favorites/');
       const data = await response.data;
       setLoading(false);
       setFavorites(data);
+      // console.log(data)
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -29,9 +27,7 @@ const Favorites = () => {
 
   const removeFavorite = async (id) => {
     try {
-      const response = await axios.delete(
-        `https://arcane-fortress-47060.herokuapp.com/api/remove-favorite/${id}`
-      );
+      const response = await axios.delete(`/api/remove-favorite/${id}`);
       const data = await response.data;
       console.log(data);
       fetchFavorites();
@@ -49,11 +45,7 @@ const Favorites = () => {
   };
 
   if (loading) {
-    return (
-      <div className="mt-16">
-        <Loading />
-      </div>
-    );
+    return <h1>Loading..</h1>;
   }
 
   return (
@@ -63,7 +55,7 @@ const Favorites = () => {
           <h2>Favourites</h2>
         </div>
 
-        {/* <form className="favorites__search" onSubmit={handleSubmit}>
+        <form className="favorites__search" onSubmit={handleSubmit}>
           <AiOutlineSearch className="favorites__icon" />
           <input
             ref={inputRef}
@@ -75,22 +67,21 @@ const Favorites = () => {
           <button className="favorites__button" type="submit">
             Search
           </button>
-        </form> */}
+        </form>
       </div>
 
-      {/* <div className="fav__start">
+      <div className="fav__start">
         <div>
           <Link
             to={{
-              pathname: '/Meal',
+              pathname: '/',
             }}
           >
             <MdKeyboardArrowLeft />{' '}
           </Link>
         </div>
-      
       </div>
-      <div></div> */}
+      <div></div>
 
       <div className="sm:grid md:grid-cols-2 lg:grid-cols-5 mt-5">
         {favorites.length > 0 &&
@@ -107,6 +98,7 @@ const Favorites = () => {
                       style={{ color: '#DE1A1A' }}
                       onClick={() => removeFavorite(id)}
                     />
+                    <BsThreeDotsVertical />
                   </div>
                 </div>
               </div>

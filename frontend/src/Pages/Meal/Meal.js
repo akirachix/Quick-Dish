@@ -6,6 +6,8 @@ import Loading from '../../components/Loading/Loading';
 import { useState, useEffect, useCallback } from 'react';
 import { useGlobalContext } from '../../context/context';
 import { useParams, useNavigate } from 'react-router-dom';
+import { MdKeyboardArrowLeft } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 const Meal = () => {
   const { id } = useParams();
@@ -119,6 +121,15 @@ const Meal = () => {
     <div className="meal">
       <div className="header">
         <img className="header__logo" src={logo} alt="logo" />
+      </div>
+      <div className="fave__startt">
+        <div>
+          <Link
+            to='/'
+          >
+            <MdKeyboardArrowLeft />{' '}
+          </Link>
+        </div>
       </div>
 
       <div className="meal__info">
